@@ -1,6 +1,7 @@
 import { defineConfig } from 'astro/config';
 
+// https://astro.build
 export default defineConfig({
-  site: 'https://rankandfile7.github.io',
-  base: '/Broken-Frame',
+  // Set this to your production domain before deploying (used for canonical URLs / sitemap).
+  site: 'https://brokenframestrategies.com',
 });
