@@ -1,0 +1,197 @@
+---
+// Contact — framed "discovery session" madlib form.
+//
+// FORM BACKEND: Web3Forms (https://web3forms.com) — free, no account dashboard,
+// no third-party script loaded on the page. Submissions are POSTed directly to
+// their API at submit time and emailed to you.
+//
+// ►► THE ONE THING YOU NEED TO DO:
+//    1. Go to https://web3forms.com, enter the email where you want submissions
+//       to land, and they'll email you an Access Key (a UUID).
+//    2. Paste it into ACCESS_KEY below.
+//    That's it — the form goes live. Until a key is set, the form gracefully
+//    falls back to opening a pre-filled email to FALLBACK_EMAIL.
+//
+const ACCESS_KEY = '';                              // ← paste your Web3Forms access key here
+const FALLBACK_EMAIL = 'hello@brokenframestrategies.com'; // ← used only until a key is set; make it real
+const SUBJECT = 'New discovery session request — Broken Frame';
+---
+<section class="contact section" id="contact">
+  <div class="contact-glow" aria-hidden="true"></div>
+  <div class="container">
+    <div class="contact-frame reveal">
+      <span class="corner tl" aria-hidden="true"></span>
+      <span class="corner br" aria-hidden="true"></span>
+
+      <p class="eyebrow"><span class="frame-mark"></span> The Discovery Session</p>
+      <h2 class="display contact-title">Ready to ignite your <em>brand story?</em></h2>
+      <p class="contact-lead">
+        Sixty focused minutes. We pull apart how you tell your story today and find the frame that
+        makes your value obvious. Free, structured, and yours to keep — you'll hear back within one
+        business day.
+      </p>
+
+      <form class="madlib" data-access-key={ACCESS_KEY} data-fallback={FALLBACK_EMAIL} data-subject={SUBJECT} novalidate>
+        <!-- Web3Forms honeypot: bots fill this hidden field; humans never see it. -->
+        <input type="checkbox" name="botcheck" class="hp" tabindex="-1" autocomplete="off" aria-hidden="true" />
+
+        <p class="madlib-line">
+          <span>My name is</span>
+          <span class="field">
+            <input type="text" name="name" required autocomplete="name" placeholder="Full name" aria-label="Your full name" />
+          </span>
+          <span class="dot">.</span>
+        </p>
+        <p class="madlib-line">
+          <span>Reach me at</span>
+          <span class="field">
+            <input type="email" name="email" required autocomplete="email" placeholder="you@company.com" aria-label="Your email" />
+          </span>
+          <span class="dot">.</span>
+        </p>
+        <p class="madlib-line">
+          <span>I'm working on</span>
+          <span class="field wide">
+            <input type="text" name="challenge" placeholder="your business or challenge" aria-label="One line about your business or challenge" />
+          </span>
+          <span class="dot">.</span>
+        </p>
+
+        <div class="madlib-actions">
+          <button type="submit" class="btn">
+            <span class="btn-label">Frame the story</span>
+            <span class="arrow" aria-hidden="true">→</span>
+          </button>
+          <span class="form-status" role="status" aria-live="polite"></span>
+        </div>
+      </form>
+    </div>
+  </div>
+</section>
+
+<style>
+  .contact { background: var(--bg); overflow: hidden; }
+  .contact-glow {
+    position: absolute; left: 50%; top: 40%; transform: translate(-50%,-50%);
+    width: 80%; height: 90%;
+    background: radial-gradient(ellipse 50% 50% at 50% 50%, rgba(216,72,28,.20), transparent 66%);
+    pointer-events: none;
+  }
+  .contact-frame {
+    position: relative; z-index: 1;
+    border: 1px solid var(--hair-warm); border-radius: 4px;
+    padding: clamp(34px, 6vw, 80px);
+    box-shadow: inset 0 0 80px rgba(245,130,46,.05), 0 30px 90px rgba(0,0,0,.4);
+    background: linear-gradient(180deg, rgba(36,26,51,.35), rgba(21,14,30,.2));
+  }
+  .corner { position: absolute; width: 28px; height: 28px; }
+  .corner.tl { top: -1px; left: -1px; border-top: 2px solid var(--ember); border-left: 2px solid var(--ember); }
+  .corner.br { bottom: -1px; right: -1px; border-bottom: 2px solid var(--ember); border-right: 2px solid var(--ember); }
+
+  .contact-title { font-size: clamp(30px, 4.4vw, 56px); margin-top: 18px; }
+  .contact-lead { margin-top: 22px; max-width: 54ch; font-weight: 300; font-size: clamp(15px,1.3vw,17px); line-height: 1.75; color: var(--muted); }
+
+  .madlib { margin-top: 44px; }
+
+  /* visually-hidden honeypot (kept out of the layout + off the a11y tree) */
+  .hp { position: absolute !important; left: -9999px; width: 1px; height: 1px; opacity: 0; pointer-events: none; }
+
+  .madlib-line {
+    display: flex; align-items: baseline; flex-wrap: wrap; gap: 6px 14px;
+    font-family: var(--serif); font-size: clamp(22px, 2.8vw, 34px); font-weight: 400;
+    color: var(--ink); margin-bottom: 20px; line-height: 1.5;
+  }
+  .field { position: relative; flex: 1 1 240px; min-width: 200px; }
+  .field.wide { flex-basis: 340px; }
+  .field input {
+    width: 100%; background: transparent; border: 0;
+    border-bottom: 1px solid var(--hair-warm);
+    font-family: var(--serif); font-size: inherit; color: var(--gold);
+    padding: 2px 4px 8px; transition: border-color .2s ease;
+  }
+  .field input::placeholder { color: var(--muted-dim); font-style: italic; }
+  .field input:focus { outline: none; border-bottom-color: var(--ember-hot); box-shadow: 0 2px 14px -6px rgba(255,154,60,.8); }
+  .field input:user-invalid { border-bottom-color: #E4573C; }
+  .dot { color: var(--ember); font-family: var(--serif); }
+
+  .madlib-actions { margin-top: 34px; display: flex; align-items: center; gap: 22px; flex-wrap: wrap; }
+  .btn[disabled] { opacity: .6; cursor: progress; }
+  .form-status { font-family: var(--sans); font-size: 14px; color: var(--muted); max-width: 44ch; }
+  .form-status.ok { color: var(--ember-hot); }
+  .form-status.err { color: #E4573C; }
+
+  @media (max-width: 620px) {
+    .madlib-line { font-size: 22px; }
+    .field { flex-basis: 100%; }
+  }
+</style>
+
+<script>
+  const form = document.querySelector('.madlib') as HTMLFormElement | null;
+  if (form) {
+    const statusEl = form.querySelector('.form-status') as HTMLElement;
+    const btn = form.querySelector('button[type="submit"]') as HTMLButtonElement;
+    const labelEl = btn.querySelector('.btn-label') as HTMLElement;
+    const accessKey = (form.dataset.accessKey || '').trim();
+    const fallback = form.dataset.fallback || '';
+    const subject = form.dataset.subject || 'New enquiry';
+    const WEB3FORMS_URL = 'https://api.web3forms.com/submit';
+
+    const setStatus = (msg: string, cls = '') => {
+      statusEl.textContent = msg;
+      statusEl.className = 'form-status' + (cls ? ' ' + cls : '');
+    };
+    const setBusy = (busy: boolean) => {
+      btn.disabled = busy;
+      labelEl.textContent = busy ? 'Sending…' : 'Frame the story';
+    };
+
+    form.addEventListener('submit', async (e) => {
+      e.preventDefault();
+      if (!form.reportValidity()) return;
+
+      // Honeypot: a real user never checks this. If set, silently no-op.
+      const hp = form.querySelector('input[name="botcheck"]') as HTMLInputElement;
+      if (hp && hp.checked) { setStatus("Thanks — you'll hear back soon.", 'ok'); form.reset(); return; }
+
+      const data = new FormData(form);
+
+      // No key configured yet → graceful mailto fallback so the form is never a dead end.
+      if (!accessKey) {
+        const name = String(data.get('name') || '');
+        const email = String(data.get('email') || '');
+        const challenge = String(data.get('challenge') || '');
+        const body = encodeURIComponent(`Name: ${name}\nEmail: ${email}\nWorking on: ${challenge}`);
+        window.location.href = `mailto:${fallback}?subject=${encodeURIComponent(subject)}&body=${body}`;
+        setStatus('Opening your email app…', 'ok');
+        return;
+      }
+
+      // Real submission via Web3Forms.
+      data.append('access_key', accessKey);
+      data.append('subject', subject);
+      data.append('from_name', 'Broken Frame — website');
+
+      setBusy(true);
+      setStatus('Sending…');
+      try {
+        const res = await fetch(WEB3FORMS_URL, {
+          method: 'POST',
+          headers: { Accept: 'application/json' },
+          body: data,
+        });
+        const json = await res.json().catch(() => ({}));
+        if (res.ok && json.success) {
+          form.reset();
+          setStatus("Got it. You'll hear back within one business day.", 'ok');
+        } else {
+          setStatus(`Couldn't send that — please email ${fallback} instead.`, 'err');
+        }
+      } catch {
+        setStatus(`Network hiccup — please email ${fallback} instead.`, 'err');
+      } finally {
+        setBusy(false);
+      }
+    });
+  }
+</script>

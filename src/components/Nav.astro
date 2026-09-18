@@ -1,0 +1,120 @@
+---
+const links = [
+  { href: '#problem',  label: 'Problem' },
+  { href: '#approach', label: 'Approach' },
+  { href: '#payoff',   label: 'What It Unlocks' },
+  { href: '#about',    label: 'About' },
+];
+---
+<header class="nav" id="site-nav">
+  <div class="container nav-inner">
+    <a class="brand" href="#top" aria-label="Broken Frame Strategies — home">
+      <span class="logo-mark" aria-hidden="true">
+        <svg viewBox="0 0 32 32" width="26" height="26">
+          <path d="M8 7 H21 M8 7 V20" fill="none" stroke="var(--ember)" stroke-width="2.2" stroke-linecap="square"/>
+          <path d="M24 25 H11 M24 25 V12" fill="none" stroke="var(--ember)" stroke-width="2.2" stroke-linecap="square"/>
+        </svg>
+      </span>
+      <span class="brand-name">Broken Frame</span>
+    </a>
+
+    <nav class="nav-links" aria-label="Primary">
+      {links.map((l) => <a href={l.href}>{l.label}</a>)}
+    </nav>
+
+    <div class="nav-cta">
+      <a class="btn btn-sm" href="#contact">Free Consultation</a>
+      <button class="menu-toggle" aria-label="Open menu" aria-expanded="false" aria-controls="mobile-menu">
+        <span></span><span></span>
+      </button>
+    </div>
+  </div>
+
+  <div class="mobile-menu" id="mobile-menu" hidden>
+    {links.map((l) => <a href={l.href}>{l.label}</a>)}
+    <a class="btn btn-sm" href="#contact">Free Consultation</a>
+  </div>
+</header>
+
+<style>
+  .nav {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+    padding-block: 18px;
+    transition: background .3s ease, backdrop-filter .3s ease, border-color .3s ease;
+    border-bottom: 1px solid transparent;
+  }
+  .nav.scrolled {
+    background: rgba(16,10,24,.72);
+    backdrop-filter: blur(14px);
+    border-bottom-color: var(--hair);
+  }
+  .nav-inner { display: flex; align-items: center; justify-content: space-between; gap: 24px; }
+
+  .brand { display: inline-flex; align-items: center; gap: 11px; }
+  .logo-mark { display: grid; place-items: center; }
+  .brand-name {
+    font-family: var(--sans); font-weight: 600; font-size: 13px;
+    letter-spacing: .22em; text-transform: uppercase; color: var(--ink);
+  }
+
+  .nav-links { display: flex; gap: 34px; }
+  .nav-links a {
+    font-size: 14px; color: var(--muted); letter-spacing: .01em;
+    position: relative; transition: color .2s ease;
+  }
+  .nav-links a::after {
+    content: ''; position: absolute; left: 0; bottom: -6px; height: 1px; width: 0;
+    background: var(--ember); transition: width .25s ease;
+  }
+  .nav-links a:hover { color: var(--ink); }
+  .nav-links a:hover::after { width: 100%; }
+
+  .nav-cta { display: flex; align-items: center; gap: 14px; }
+
+  .menu-toggle {
+    display: none; width: 40px; height: 40px; border: 1px solid var(--hair);
+    border-radius: 10px; background: transparent; cursor: pointer;
+    flex-direction: column; align-items: center; justify-content: center; gap: 5px;
+  }
+  .menu-toggle span { width: 18px; height: 1.5px; background: var(--ink); transition: transform .25s ease, opacity .25s ease; }
+  .menu-toggle[aria-expanded="true"] span:first-child { transform: translateY(3.25px) rotate(45deg); }
+  .menu-toggle[aria-expanded="true"] span:last-child  { transform: translateY(-3.25px) rotate(-45deg); }
+
+  .mobile-menu {
+    display: none; flex-direction: column; gap: 4px;
+    padding: 8px var(--gut) 22px;
+    background: rgba(16,10,24,.96); backdrop-filter: blur(14px);
+    border-bottom: 1px solid var(--hair);
+  }
+  .mobile-menu a:not(.btn) { padding: 14px 0; font-size: 17px; color: var(--ink); border-bottom: 1px solid var(--hair); }
+  .mobile-menu .btn { margin-top: 16px; align-self: flex-start; }
+
+  @media (max-width: 880px) {
+    .nav-links { display: none; }
+    .nav-cta .btn { display: none; }
+    .menu-toggle { display: flex; }
+    .mobile-menu.open { display: flex; }
+  }
+</style>
+
+<script>
+  const nav = document.getElementById('site-nav');
+  const onScroll = () => nav?.classList.toggle('scrolled', window.scrollY > 24);
+  onScroll();
+  window.addEventListener('scroll', onScroll, { passive: true });
+
+  const toggle = document.querySelector('.menu-toggle');
+  const menu = document.getElementById('mobile-menu');
+  toggle?.addEventListener('click', () => {
+    const open = menu?.classList.toggle('open');
+    if (menu) menu.hidden = !open;
+    toggle.setAttribute('aria-expanded', String(!!open));
+  });
+  menu?.querySelectorAll('a').forEach((a) =>
+    a.addEventListener('click', () => {
+      menu.classList.remove('open');
+      menu.hidden = true;
+      toggle?.setAttribute('aria-expanded', 'false');
+    })
+  );
+</script>

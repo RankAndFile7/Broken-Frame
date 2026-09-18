@@ -1,0 +1,75 @@
+---
+// 03 — The Payoff. Staggered, glowing broken-frame cards.
+const items = [
+  { n: '01', title: 'Higher Conversion',   note: 'Sales and ads that actually land.',        offset: 'off-a' },
+  { n: '02', title: 'Investor Confidence',  note: 'Pitches that get a yes.',                  offset: 'off-b' },
+  { n: '03', title: 'Team Alignment',       note: 'Everyone rowing the same direction.',      offset: 'off-c' },
+  { n: '04', title: 'Organic Growth',       note: 'A story your customers tell for you.',     offset: 'off-d' },
+];
+---
+<section class="payoff section" id="payoff">
+  <div class="container">
+    <p class="eyebrow reveal"><span class="frame-mark"></span> <span class="num">03</span> &nbsp;The Payoff</p>
+    <h2 class="display payoff-title reveal">What a strong narrative<br />unlocks.</h2>
+
+    <ul class="cards" role="list">
+      {items.map((it) => (
+        <li class={`card ${it.offset} reveal`}>
+          <span class="card-n">{it.n}</span>
+          <span class="card-title">{it.title}</span>
+          <span class="card-note">{it.note}</span>
+          <span class="card-spark" aria-hidden="true"></span>
+        </li>
+      ))}
+    </ul>
+  </div>
+</section>
+
+<style>
+  .payoff { background: var(--bg); }
+  .payoff-title { font-size: clamp(30px, 4.4vw, 56px); line-height: 1.05; margin-top: 20px; }
+
+  .cards { margin-top: 64px; display: flex; flex-direction: column; gap: 20px; max-width: 1000px; }
+
+  .card {
+    position: relative;
+    display: flex; align-items: center; gap: 26px;
+    width: min(72%, 640px);
+    padding: 26px 34px;
+    border: 1px solid rgba(245,130,46,.38);
+    border-radius: 3px;
+    background: linear-gradient(100deg, rgba(245,130,46,.05), rgba(245,130,46,.01));
+    box-shadow: 0 0 0 1px rgba(245,130,46,.05), 0 0 34px rgba(245,130,46,.12), inset 0 0 30px rgba(245,130,46,.04);
+    transition: transform .25s ease, box-shadow .25s ease, border-color .25s ease;
+  }
+  .card:hover {
+    transform: translateY(-3px);
+    border-color: rgba(245,130,46,.7);
+    box-shadow: 0 0 0 1px rgba(245,130,46,.12), 0 10px 46px rgba(245,130,46,.28), inset 0 0 30px rgba(245,130,46,.06);
+  }
+  /* staircase offsets — displaced frames */
+  .off-a { align-self: flex-start; margin-left: 0; }
+  .off-b { align-self: flex-end;   margin-right: 2%; }
+  .off-c { align-self: flex-start; margin-left: 8%; }
+  .off-d { align-self: center; }
+
+  .card-n {
+    font-family: var(--serif); font-weight: 600; font-size: clamp(24px, 2.4vw, 32px);
+    color: var(--ember); flex: none; line-height: 1;
+  }
+  .card-title { font-family: var(--serif); font-weight: 600; font-size: clamp(18px, 1.7vw, 23px); color: var(--ink); letter-spacing: -.01em; }
+  .card-note { margin-left: auto; text-align: right; font-size: 13.5px; color: var(--muted); font-weight: 300; }
+
+  .card-spark {
+    position: absolute; top: -3px; right: 14%; width: 22px; height: 2px;
+    background: linear-gradient(90deg, transparent, var(--ember-hot), transparent);
+    box-shadow: 0 0 10px rgba(255,154,60,.9); opacity: .8;
+  }
+
+  @media (max-width: 720px) {
+    .cards { max-width: none; }
+    .card { width: 100%; align-self: stretch !important; margin: 0 !important;
+      flex-wrap: wrap; gap: 10px 18px; padding: 22px 24px; }
+    .card-note { margin-left: 0; text-align: left; flex-basis: 100%; }
+  }
+</style>

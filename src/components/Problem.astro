@@ -1,0 +1,45 @@
+---
+// 01 — The Real Problem
+---
+<section class="problem section" id="problem">
+  <div class="container">
+    <p class="eyebrow reveal"><span class="frame-mark"></span> <span class="num">01</span> &nbsp;The Real Problem</p>
+
+    <div class="problem-grid">
+      <div class="problem-head reveal">
+        <span class="rule" aria-hidden="true"></span>
+        <h2 class="display">
+          Before anyone will buy your product, they must first <em>buy into your story.</em>
+        </h2>
+      </div>
+
+      <p class="problem-body reveal">
+        When ads aren't converting, social is flat, and investors aren't hopping on board —
+        the real problem is that they can't see the value. The brand story isn't landing.
+      </p>
+    </div>
+  </div>
+</section>
+
+<style>
+  .problem { background: var(--bg-deep); }
+  .problem-grid {
+    margin-top: 54px;
+    display: grid; grid-template-columns: 1.5fr 1fr; gap: 0 clamp(30px, 6vw, 90px);
+    align-items: end;
+  }
+  .problem-head { position: relative; padding-left: 30px; }
+  .problem-head .rule {
+    position: absolute; left: 0; top: 6px; bottom: 6px; width: 2px;
+    background: linear-gradient(var(--ember), var(--ember-deep));
+    box-shadow: 0 0 16px rgba(245,130,46,.6);
+  }
+  .problem-head h2 { font-size: clamp(30px, 4.3vw, 58px); line-height: 1.08; }
+  .problem-body {
+    font-weight: 300; font-size: clamp(15px, 1.3vw, 17px); line-height: 1.8; color: var(--muted);
+    padding-bottom: 10px; max-width: 40ch;
+  }
+  @media (max-width: 860px) {
+    .problem-grid { grid-template-columns: 1fr; gap: 34px; }
+  }
+</style>

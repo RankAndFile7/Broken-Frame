@@ -1,0 +1,84 @@
+---
+// 02 — The Approach (lighter plum band, framed abstract visual on the left)
+---
+<section class="approach section" id="approach">
+  <div class="container approach-grid">
+    <div class="approach-visual reveal" aria-hidden="true">
+      <div class="visual-frame">
+        <div class="beams"></div>
+        <span class="spark v1"></span>
+        <span class="spark v2"></span>
+      </div>
+    </div>
+
+    <div class="approach-copy">
+      <p class="eyebrow reveal"><span class="frame-mark"></span> <span class="num">02</span> &nbsp;The Approach</p>
+
+      <h2 class="display reveal approach-title">
+        Brand narrative: <em>a sharable lens for value.</em>
+      </h2>
+      <p class="body reveal">
+        A good brand narrative breaks their old frame and gives them an insight into your unique
+        way of viewing the problem. Now, through your framing, the value becomes crystal clear —
+        and your solution is the obvious answer.
+      </p>
+
+      <h3 class="subhead reveal">Story: solving growth at the source</h3>
+      <p class="body reveal">
+        Above everything else, your business is a story about how you create change in the world.
+        Everything else is just execution. Fix how you tell your story, and everything downstream
+        falls into place.
+      </p>
+    </div>
+  </div>
+</section>
+
+<style>
+  .approach { background: var(--bg-raise); }
+  .approach::before, .approach::after {
+    /* soft blend into the darker sections above and below */
+    content: ''; position: absolute; left: 0; right: 0; height: 120px; pointer-events: none;
+  }
+  .approach::before { top: 0; background: linear-gradient(var(--bg-deep), transparent); }
+  .approach::after  { bottom: 0; background: linear-gradient(transparent, var(--bg)); }
+
+  .approach-grid {
+    position: relative; z-index: 1;
+    display: grid; grid-template-columns: .95fr 1.05fr; gap: clamp(30px, 5vw, 76px);
+    align-items: center;
+  }
+
+  .visual-frame {
+    position: relative; padding: 12px; border: 1px solid var(--hair);
+    box-shadow: 0 24px 70px rgba(0,0,0,.4);
+  }
+  .beams {
+    aspect-ratio: 1 / 1; position: relative; overflow: hidden; background: #0C0812;
+    background-image:
+      linear-gradient(122deg, transparent 30%, rgba(245,130,46,.0) 36%, #F5822E 41%, #FFC366 44%, #B94E6E 48%, transparent 52%),
+      linear-gradient(122deg, transparent 52%, #E0703A 58%, #8A3F84 63%, transparent 68%),
+      linear-gradient(122deg, transparent 70%, rgba(245,154,60,.7) 75%, transparent 80%);
+    filter: saturate(1.05);
+  }
+  .beams::after {
+    content: ''; position: absolute; inset: 0;
+    background: radial-gradient(ellipse at 40% 60%, transparent 40%, rgba(12,8,18,.55) 100%);
+  }
+  .v1 { top: 30%; left: 34%; width: 4px; height: 4px; }
+  .v2 { top: 46%; left: 28%; width: 3px; height: 3px; opacity: .6; }
+
+  .approach-title { font-size: clamp(28px, 3.4vw, 46px); line-height: 1.12; }
+  .body {
+    margin-top: 22px; font-weight: 300; font-size: clamp(15px, 1.25vw, 17px);
+    line-height: 1.8; color: var(--muted); max-width: 46ch;
+  }
+  .subhead {
+    margin-top: 40px; font-family: var(--serif); font-weight: 600;
+    font-size: clamp(19px, 1.8vw, 24px); color: var(--ink); letter-spacing: -.01em;
+  }
+
+  @media (max-width: 860px) {
+    .approach-grid { grid-template-columns: 1fr; }
+    .approach-visual { max-width: 360px; }
+  }
+</style>

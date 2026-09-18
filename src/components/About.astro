@@ -1,0 +1,87 @@
+---
+// About — drafted first-person bio, text-forward with a supporting portrait frame.
+// NOTE: one line still needs Robert's input — see data-needs-input below.
+---
+<section class="about section" id="about">
+  <div class="container about-grid">
+    <div class="about-copy">
+      <p class="eyebrow reveal"><span class="frame-mark"></span> <span class="num">04</span> &nbsp;About</p>
+      <h2 class="display about-title reveal">Fifteen years watching businesses fix the <em>wrong thing.</em></h2>
+
+      <div class="about-body">
+        <p class="reveal">
+          The pattern is always the same. Sales are flat, the ads aren't converting, the pipeline's
+          thin — and the instinct is to do <em>more</em>. More campaigns, more channels, more spend.
+          I ran that playbook myself for years: agency account exec, then head of marketing at a
+          string of startups, throwing volume at problems and calling the good months proof it worked.
+        </p>
+        <p class="reveal">
+          But more of a broken story is just a more expensive broken story. You can't out-spend a
+          message nobody's buying. And most of the time, that's the actual problem — not reach, not
+          budget, not effort. The story underneath isn't landing.
+        </p>
+        <p class="reveal">
+          That realization is why I stopped being a generalist. Storytelling structure had always
+          been the thing I couldn't put down —
+          <span class="fill" data-needs-input="the side obsession: e.g. screenwriting, myth, story theory">the craft of story structure itself</span>.
+          The nights-and-weekends interest that had nothing to do with the day job, until one day I
+          saw they were the same job. Every strong strategy is a story about how a company creates
+          change. Every weak one is a company that never got its story straight. So I went where the
+          leverage was and specialized in narrative strategy.
+        </p>
+        <p class="reveal">
+          Now I do one thing: I help founders find the story that makes their value obvious — and then
+          I teach them to own it. The goal isn't to make you dependent on me. It's to make you
+          dangerous without me.
+        </p>
+        <p class="reveal pull">
+          I believe most business problems people treat as execution problems are really
+          <em>framing</em> problems. Fix the frame, and everything downstream — sales, fundraising,
+          team, growth — starts pulling in the same direction.
+        </p>
+      </div>
+    </div>
+
+    <aside class="about-visual reveal" aria-hidden="true">
+      <div class="portrait-frame">
+        <div class="portrait">
+          <span class="portrait-label">Portrait</span>
+        </div>
+      </div>
+      <p class="portrait-cap">Robert — founder, Broken Frame Strategies · Encinitas, CA</p>
+    </aside>
+  </div>
+</section>
+
+<style>
+  .about { background: var(--bg-deep); }
+  .about-grid { display: grid; grid-template-columns: 1.4fr .8fr; gap: clamp(30px, 5vw, 80px); align-items: start; }
+  .about-title { font-size: clamp(28px, 3.8vw, 50px); line-height: 1.1; margin-top: 22px; max-width: 18ch; }
+
+  .about-body { margin-top: 34px; max-width: 60ch; }
+  .about-body p { font-weight: 300; font-size: clamp(15px, 1.25vw, 17px); line-height: 1.85; color: var(--muted); margin-top: 20px; }
+  .about-body p:first-child { margin-top: 0; }
+  .about-body em { font-style: italic; color: var(--gold); }
+  .about-body .pull { color: var(--ink); font-size: clamp(16px, 1.4vw, 19px); border-left: 2px solid var(--ember); padding-left: 22px; }
+
+  .fill {
+    color: var(--ember-hot); font-style: italic;
+    border-bottom: 1px dashed rgba(245,154,60,.5); cursor: help;
+  }
+
+  .about-visual { position: sticky; top: 110px; }
+  .portrait-frame { padding: 12px; border: 1px solid var(--hair-warm); box-shadow: 0 0 40px rgba(245,130,46,.14); }
+  .portrait {
+    aspect-ratio: 4 / 5; display: grid; place-items: center;
+    background:
+      radial-gradient(ellipse at 50% 30%, rgba(245,130,46,.18), transparent 60%),
+      linear-gradient(160deg, #221733, #140D1E);
+  }
+  .portrait-label { font-size: 11px; letter-spacing: .3em; text-transform: uppercase; color: var(--muted-dim); }
+  .portrait-cap { margin-top: 16px; font-size: 12.5px; color: var(--muted-dim); }
+
+  @media (max-width: 860px) {
+    .about-grid { grid-template-columns: 1fr; }
+    .about-visual { position: static; max-width: 300px; }
+  }
+</style>
