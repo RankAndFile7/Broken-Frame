@@ -28,10 +28,10 @@ const canonical = Astro.site ? new URL(Astro.url.pathname, Astro.site).href : un
     {canonical && <meta property="og:url" content={canonical} />}
 
     <!-- Preload the two faces used above the fold -->
-    <link rel="preload" href="/fonts/fraunces-latin-400-normal.woff2" as="font" type="font/woff2" crossorigin />
-    <link rel="preload" href="/fonts/fraunces-latin-500-italic.woff2" as="font" type="font/woff2" crossorigin />
+    <link rel="preload" href="/Broken-Frame/fonts/fraunces-latin-400-normal.woff2" as="font" type="font/woff2" crossorigin />
+    <link rel="preload" href="/Broken-Frame/fonts/fraunces-latin-500-italic.woff2" as="font" type="font/woff2" crossorigin />
 
-    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+    <link rel="icon" href="/Broken-Frame/favicon.svg" type="image/svg+xml" />
   </head>
   <body>
     <slot />
