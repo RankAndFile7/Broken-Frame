@@ -44,7 +44,9 @@
 
     <aside class="about-visual reveal" aria-hidden="true">
       <div class="portrait-frame">
-        <img class="portrait" src="/robert.jpg" alt="Robert, founder of Broken Frame Strategies, at a Buddhist temple surrounded by colourful prayer flags" />
+        <div class="portrait-mask">
+          <img class="portrait" src="/robert.jpg" alt="Robert, founder of Broken Frame Strategies, at a Buddhist temple surrounded by colourful prayer flags" />
+        </div>
       </div>
       <p class="portrait-cap">Robert — founder, Broken Frame Strategies · Encinitas, CA</p>
     </aside>
@@ -69,9 +71,26 @@
 
   .about-visual { position: sticky; top: 110px; }
   .portrait-frame { padding: 12px; border: 1px solid var(--hair-warm); box-shadow: 0 0 40px rgba(245,130,46,.14); }
+  /* ── Portrait crop controls ──────────────────────────────
+     zoom:  1 = no zoom, 2 = 2× zoom, etc.
+     x:     0% = far left, 50% = centre, 100% = far right
+     y:     0% = top,      50% = centre, 100% = bottom
+     ────────────────────────────────────────────────────── */
+  .portrait-mask {
+    --zoom: 2.2;
+    --x: 60%;
+    --y: 53%;
+
+    overflow: hidden;
+    aspect-ratio: 4 / 5;
+    line-height: 0;
+  }
   .portrait {
-    display: block; width: 100%; aspect-ratio: 4 / 5;
-    object-fit: cover; object-position: center 20%;
+    display: block; width: 100%; height: 100%;
+    object-fit: cover;
+    object-position: var(--x) var(--y);
+    transform: scale(var(--zoom));
+    transform-origin: var(--x) var(--y);
   }
   .portrait-cap { margin-top: 16px; font-size: 12.5px; color: var(--muted-dim); }
 
