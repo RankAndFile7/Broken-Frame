@@ -9,13 +9,7 @@ const links = [
 <header class="nav" id="site-nav">
   <div class="container nav-inner">
     <a class="brand" href="#top" aria-label="Broken Frame Strategies — home">
-      <span class="logo-mark" aria-hidden="true">
-        <svg viewBox="0 0 32 32" width="26" height="26">
-          <path d="M8 7 H21 M8 7 V20" fill="none" stroke="var(--ember)" stroke-width="2.2" stroke-linecap="square"/>
-          <path d="M24 25 H11 M24 25 V12" fill="none" stroke="var(--ember)" stroke-width="2.2" stroke-linecap="square"/>
-        </svg>
-      </span>
-      <span class="brand-name">Broken Frame</span>
+      <img class="brand-logo" src="/logo.png" alt="Broken Frame Strategies" />
     </a>
 
     <nav class="nav-links" aria-label="Primary">
@@ -50,12 +44,8 @@ const links = [
   }
   .nav-inner { display: flex; align-items: center; justify-content: space-between; gap: 24px; }
 
-  .brand { display: inline-flex; align-items: center; gap: 11px; }
-  .logo-mark { display: grid; place-items: center; }
-  .brand-name {
-    font-family: var(--sans); font-weight: 600; font-size: 13px;
-    letter-spacing: .22em; text-transform: uppercase; color: var(--ink);
-  }
+  .brand { display: inline-flex; align-items: center; }
+  .brand-logo { height: 38px; width: auto; display: block; }
 
   .nav-links { display: flex; gap: 34px; }
   .nav-links a {
