@@ -28,7 +28,8 @@ const { id = 'contact' } = Astro.props;
   <div class="body">
     <div class="mono spark eyebrow">The Discovery Session</div>
     <h2 class="title rise">Ready to ignite your brand story?</h2>
-    <p class="lead">Sixty focused minutes. We pull apart how you tell your story today and find the frame that makes your value obvious. Free, structured, and yours to keep — you'll hear back within one business day.</p>
+    <p class="subhead">Frame the story. Win the buy in.</p>
+    <p class="lead">Discover how a brand narrative and the right framing can make your value obvious.</p>
 
     <form class="madlib" data-access-key={ACCESS_KEY} data-fallback={FALLBACK_EMAIL} data-subject={SUBJECT} novalidate>
       <!-- honeypot: bots tick it, humans never see it -->
@@ -62,7 +63,8 @@ const { id = 'contact' } = Astro.props;
   .card { position: relative; max-width: 1080px; padding: 64px 56px 72px; }
   .scrim { position: absolute; inset: 0; background: rgba(14,11,12,0.55); }
   .body { position: relative; }
-  .eyebrow { margin-bottom: 28px; }
+  .eyebrow { margin-bottom: 28px; font-size: 16px; }
+  .subhead { margin: 14px 0 0; font-weight: 600; font-size: 19px; letter-spacing: 0.01em; color: var(--spark); }
   .title {
     margin: 0; font-weight: 800; font-stretch: 72%;
     font-size: clamp(44px, 7vw, 120px); line-height: 0.94; letter-spacing: -0.025em;
