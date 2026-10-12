@@ -1,0 +1,30 @@
+---
+import Base from '../layouts/Base.astro';
+import Nav from '../components/Nav.astro';
+import About from '../components/About.astro';
+import Footer from '../components/Footer.astro';
+---
+<Base title="Our Story — Broken Frame Strategies" description="The story behind Broken Frame Strategies.">
+  <Nav />
+  <main>
+    <section class="os-hero" id="top">
+      <div class="container os-inner">
+        <h1 class="display os-title reveal">Our Story</h1>
+      </div>
+    </section>
+
+    <About />
+  </main>
+  <Footer />
+</Base>
+
+<style>
+  .os-hero {
+    position: relative;
+    padding-top: clamp(140px, 20vh, 220px);
+    padding-bottom: clamp(80px, 12vh, 150px);
+    padding-bottom: 0;
+  }
+  .os-inner { width: 100%; }
+  .os-title { font-size: clamp(44px, 7vw, 96px); line-height: 1.02; }
+</style>
