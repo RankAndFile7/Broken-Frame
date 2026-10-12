@@ -1,0 +1,25 @@
+---
+import Base from '../layouts/Base.astro';
+import Nav from '../components/Nav.astro';
+import Contact from '../components/Contact.astro';
+import Footer from '../components/Footer.astro';
+---
+<Base title="Free Consultation — Broken Frame Strategies" description="Book a free, focused discovery session to find the frame that makes your value obvious.">
+  <Nav />
+  <main class="fc">
+    <header class="fc-head container">
+      <h1 class="display fc-title reveal">
+        Your Success<br />
+        Story Starts Here.
+      </h1>
+    </header>
+    <Contact />
+  </main>
+  <Footer />
+</Base>
+
+<style>
+  .fc { min-height: 100svh; padding-top: clamp(110px, 16vh, 170px); }
+  .fc-head { position: relative; z-index: 2; margin-bottom: clamp(-110px, -8vw, -40px); }
+  .fc-title { font-size: clamp(40px, 6vw, 80px); line-height: 1.04; }
+</style>
