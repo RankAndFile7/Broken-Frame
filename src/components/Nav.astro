@@ -10,7 +10,7 @@ interface Props { current: 'home' | 'why' | 'story' | 'consult'; }
 const { current } = Astro.props;
 ---
 <nav aria-label="Main" class="nav wrap">
-  <a href="/" class="brand"><Mark /> Broken Frame</a>
+  <a href="/" class="brand"><Mark /> Broken Frame Strategies</a>
   <div class="links">
     {pages.map((p) => (
       <a href={p.href} aria-current={current === p.key ? 'page' : undefined}>{p.label}</a>
