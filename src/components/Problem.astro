@@ -7,9 +7,9 @@
 
     <div class="problem-grid">
       <div class="problem-head reveal">
-        <span class="rule" aria-hidden="true"></span>
         <h2 class="display">
-          Before anyone will buy your product, they must first <em>buy into your story.</em>
+          Before Anyone Will Buy Your <em>Product</em><br />
+          They Must First Buy Into Your <em>Story</em>
         </h2>
       </div>
 
@@ -23,23 +23,15 @@
 
 <style>
   .problem { background: var(--bg-deep); }
+  .problem .container { text-align: center; }
   .problem-grid {
     margin-top: 54px;
-    display: grid; grid-template-columns: 1.5fr 1fr; gap: 0 clamp(30px, 6vw, 90px);
-    align-items: end;
+    display: flex; flex-direction: column; align-items: center; gap: 34px;
   }
-  .problem-head { position: relative; padding-left: 30px; }
-  .problem-head .rule {
-    position: absolute; left: 0; top: 6px; bottom: 6px; width: 2px;
-    background: linear-gradient(var(--ember), var(--ember-deep));
-    box-shadow: 0 0 16px rgba(245,130,46,.6);
-  }
-  .problem-head h2 { font-size: clamp(30px, 4.3vw, 58px); line-height: 1.08; }
+  .problem-head h2 { font-size: clamp(24px, 3.9vw, 54px); line-height: 1.12; text-wrap: initial; }
   .problem-body {
     font-weight: 300; font-size: clamp(15px, 1.3vw, 17px); line-height: 1.8; color: var(--muted);
-    padding-bottom: 10px; max-width: 40ch;
+    max-width: 52ch;
   }
-  @media (max-width: 860px) {
-    .problem-grid { grid-template-columns: 1fr; gap: 34px; }
-  }
+  .problem .eyebrow { justify-content: center; }
 </style>
