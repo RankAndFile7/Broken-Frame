@@ -1,109 +1,49 @@
 ---
-const links = [
-  { href: '/', label: 'Home' },
-  { href: '/why-narrative', label: 'Why Narrative' },
-  { href: '/our-story', label: 'Our Story' },
+import Mark from './Mark.astro';
+
+export const pages = [
+  { href: '/',                   label: 'Home',          key: 'home' },
+  { href: '/why-narrative/',     label: 'Why Narrative', key: 'why' },
+  { href: '/our-story/',         label: 'Our Story',     key: 'story' },
 ];
+interface Props { current: 'home' | 'why' | 'story' | 'consult'; }
+const { current } = Astro.props;
 ---
-<header class="nav" id="site-nav">
-  <div class="container nav-inner">
-    <a class="brand" href="/" aria-label="Broken Frame Strategies — home">
-      <img class="brand-logo" src="/logo.png" alt="Broken Frame Strategies" />
-    </a>
-
-    <nav class="nav-links" aria-label="Primary">
-      {links.map((l) => <a href={l.href}>{l.label}</a>)}
-    </nav>
-
-    <div class="nav-cta">
-      <a class="btn btn-sm" href="/free-consultation">Free Consultation</a>
-      <button class="menu-toggle" aria-label="Open menu" aria-expanded="false" aria-controls="mobile-menu">
-        <span></span><span></span>
-      </button>
-    </div>
+<nav aria-label="Main" class="nav wrap">
+  <a href="/" class="brand"><Mark /> Broken Frame</a>
+  <div class="links">
+    {pages.map((p) => (
+      <a href={p.href} aria-current={current === p.key ? 'page' : undefined}>{p.label}</a>
+    ))}
   </div>
-
-  <div class="mobile-menu" id="mobile-menu" hidden>
-    {links.map((l) => <a href={l.href}>{l.label}</a>)}
-    <a class="btn btn-sm" href="/free-consultation">Free Consultation</a>
-  </div>
-</header>
+  <a href="/free-consultation/" class="cta" aria-current={current === 'consult' ? 'page' : undefined}>Free Consultation</a>
+</nav>
 
 <style>
   .nav {
-    position: fixed; top: 0; left: 0; right: 0; z-index: 100;
-    padding-block: 18px;
-    transition: background .3s ease, backdrop-filter .3s ease, border-color .3s ease;
-    border-bottom: 1px solid transparent;
+    z-index: 3; padding-block: 28px;
+    display: flex; flex-wrap: wrap; align-items: center; gap: 20px 28px;
   }
-  .nav.scrolled {
-    background: rgba(16,10,24,.72);
-    backdrop-filter: blur(14px);
-    border-bottom-color: var(--hair);
+  .brand {
+    text-decoration: none; display: inline-flex; align-items: center; gap: 12px;
+    font-weight: 800; font-stretch: 78%; font-size: 24px; letter-spacing: -0.01em; line-height: 1;
   }
-  .nav-inner { display: flex; align-items: center; justify-content: space-between; gap: 24px; }
-
-  .brand { display: inline-flex; align-items: center; }
-  .brand-logo { height: 38px; width: auto; display: block; }
-
-  .nav-links { display: flex; gap: 34px; margin-left: auto; }
-  .nav-links a {
-    font-size: 14px; color: var(--muted); letter-spacing: .01em;
-    position: relative; transition: color .2s ease;
+  .brand:hover { color: var(--bone); }
+  .links, .cta { font-family: var(--mono); font-size: 13px; letter-spacing: 0.04em; }
+  .links { margin-left: auto; display: flex; flex-wrap: wrap; align-items: center; gap: 12px 28px; }
+  .links a { text-decoration: none; padding-block: 12px; }
+  .links a[aria-current='page'] { color: var(--spark); }
+  .cta {
+    text-decoration: none; background: var(--ember); color: var(--ink); padding: 14px 20px;
+    border-radius: 999px; font-weight: 500;
   }
-  .nav-links a::after {
-    content: ''; position: absolute; left: 0; bottom: -6px; height: 1px; width: 0;
-    background: var(--ember); transition: width .25s ease;
-  }
-  .nav-links a:hover { color: var(--ink); }
-  .nav-links a:hover::after { width: 100%; }
+  .cta:hover { color: var(--ink); background: #FF8A2B; }
 
-  .nav-cta { display: flex; align-items: center; gap: 14px; }
-
-  .menu-toggle {
-    display: none; width: 40px; height: 40px; border: 1px solid var(--hair);
-    border-radius: 10px; background: transparent; cursor: pointer;
-    flex-direction: column; align-items: center; justify-content: center; gap: 5px;
-  }
-  .menu-toggle span { width: 18px; height: 1.5px; background: var(--ink); transition: transform .25s ease, opacity .25s ease; }
-  .menu-toggle[aria-expanded="true"] span:first-child { transform: translateY(3.25px) rotate(45deg); }
-  .menu-toggle[aria-expanded="true"] span:last-child  { transform: translateY(-3.25px) rotate(-45deg); }
-
-  .mobile-menu {
-    display: none; flex-direction: column; gap: 4px;
-    padding: 8px var(--gut) 22px;
-    background: rgba(16,10,24,.96); backdrop-filter: blur(14px);
-    border-bottom: 1px solid var(--hair);
-  }
-  .mobile-menu a:not(.btn) { padding: 14px 0; font-size: 17px; color: var(--ink); border-bottom: 1px solid var(--hair); }
-  .mobile-menu .btn { margin-top: 16px; align-self: flex-start; }
-
-  @media (max-width: 880px) {
-    .nav-links { display: none; }
-    .nav-cta .btn { display: none; }
-    .menu-toggle { display: flex; }
-    .mobile-menu.open { display: flex; }
+  /* phone: brand + button on one row, page links on the next */
+  @media (max-width: 700px) {
+    .nav { padding-block: 18px 4px; gap: 8px 12px; justify-content: space-between; }
+    .brand { font-size: 20px; gap: 10px; }
+    .cta { order: 2; padding: 12px 14px; font-size: 12px; letter-spacing: 0.02em; }
+    .links { order: 3; flex-basis: 100%; margin-left: 0; gap: 0 22px; }
   }
 </style>
-
-<script>
-  const nav = document.getElementById('site-nav');
-  const onScroll = () => nav?.classList.toggle('scrolled', window.scrollY > 24);
-  onScroll();
-  window.addEventListener('scroll', onScroll, { passive: true });
-
-  const toggle = document.querySelector('.menu-toggle');
-  const menu = document.getElementById('mobile-menu');
-  toggle?.addEventListener('click', () => {
-    const open = menu?.classList.toggle('open');
-    if (menu) menu.hidden = !open;
-    toggle.setAttribute('aria-expanded', String(!!open));
-  });
-  menu?.querySelectorAll('a').forEach((a) =>
-    a.addEventListener('click', () => {
-      menu.classList.remove('open');
-      menu.hidden = true;
-      toggle?.setAttribute('aria-expanded', 'false');
-    })
-  );
-</script>

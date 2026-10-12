@@ -1,25 +1,61 @@
 ---
 import Base from '../layouts/Base.astro';
 import Nav from '../components/Nav.astro';
-import Contact from '../components/Contact.astro';
-import Footer from '../components/Footer.astro';
+import ContactCard from '../components/ContactCard.astro';
+
+const embers = [
+  [47, 4, 'spark', 6, -40, -900, -1], [50, 3, 'ember', 7, 30, -980, -3], [52, 5, 'spark', 8, 80, -1040, -5],
+  [54, 3, 'ember', 6.5, -70, -860, -2.2], [56, 4, 'spark', 7.6, 40, -940, -4.1], [49, 3, 'spark', 9, 110, -1000, -6.3],
+  [53, 4, 'ember', 6.8, -100, -900, -0.4], [51, 3, 'spark', 7.3, 10, -960, -5.5],
+] as const;
 ---
-<Base title="Free Consultation — Broken Frame Strategies" description="Book a free, focused discovery session to find the frame that makes your value obvious.">
-  <Nav />
-  <main class="fc">
-    <header class="fc-head container">
-      <h1 class="display fc-title reveal">
-        Your Success<br />
-        Story Starts Here.
+<Base
+  title="Free Consultation — Broken Frame Strategies"
+  description="Book a free, sixty-minute discovery session. We pull apart how you tell your story today and find the frame that makes your value obvious."
+>
+  <section id="top" class="consult">
+    <img class="px-img bg" src="/images/beach-campfire.jpg" alt="" fetchpriority="high" />
+    <div class="shade" aria-hidden="true"></div>
+    <div class="embers" aria-hidden="true" style="bottom: 70px; height: 10px">
+      {embers.map(([l, s, c, d, x, y, dl]) => (
+        <span class="ember" style={`left: ${l}%; width: ${s}px; height: ${s}px; background: var(--${c}); --d: ${d}s; --x: ${x}px; --y: ${y}px; animation-delay: ${dl}s`}></span>
+      ))}
+    </div>
+
+    <Nav current="consult" />
+
+    <div class="wrap inner">
+      <h1 class="h-hero headline">
+        <span class="bf" aria-hidden="true" style="--w: 3px; inset: 0 1.1em 0 0">
+          <span class="h" style="top: 0; left: 0; width: calc(100% - 1.1em)"></span><span class="v" style="top: 0; left: 0; bottom: 0"></span><span class="v" style="right: 0; top: 0; height: 40%"></span><span class="h" style="bottom: 0; left: 0; right: 0"></span>
+          <span class="v brk-load" style="right: 0; top: calc(40% + 0.2em); height: 0.5em; transform: translate(0.6em, 0.1em) rotate(15deg); transform-origin: 50% 0"></span>
+          <span class="k brk-load" style="top: 0; right: 0; width: 0.9em; height: 0.7em; border-top: var(--w) solid var(--c); border-right: var(--w) solid var(--c); transform: translate(0.66em, -0.5em) rotate(18deg); transform-origin: 0 100%"></span>
+        </span>
+        <span class="ln">Your success</span>
+        <span class="ln"><span class="spark">story</span> starts here.</span>
       </h1>
-    </header>
-    <Contact />
-  </main>
-  <Footer />
+
+      <div class="card-wrap">
+        <ContactCard id="consult" />
+      </div>
+    </div>
+  </section>
 </Base>
 
 <style>
-  .fc { min-height: 100svh; padding-top: clamp(110px, 16vh, 170px); }
-  .fc-head { position: relative; z-index: 2; margin-bottom: clamp(-110px, -8vw, -40px); }
-  .fc-title { font-size: clamp(40px, 6vw, 80px); line-height: 1.04; }
+  .consult { position: relative; min-height: 1180px; display: flex; flex-direction: column; }
+  .bg { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: 50% 78%; }
+  .shade {
+    position: absolute; inset: 0;
+    background: linear-gradient(180deg, rgba(14,11,12,0.88) 0%, rgba(14,11,12,0.6) 38%, rgba(14,11,12,0.55) 70%, rgba(14,11,12,0.95) 100%);
+  }
+  .inner { z-index: 3; padding-top: 100px; padding-bottom: 140px; }
+  .headline { text-shadow: 0 2px 30px rgba(14,11,12,0.55); }
+  .card-wrap { margin-top: 72px; }
+
+  @media (max-width: 700px) {
+    .consult { min-height: 0; }
+    .inner { padding-top: 48px; padding-bottom: 100px; }
+    .card-wrap { margin-top: 56px; }
+  }
 </style>

@@ -1,0 +1,165 @@
+---
+// The "discovery session" madlib form inside a broken frame.
+//
+// FORM BACKEND: Web3Forms (https://web3forms.com) — free, no third-party script on
+// the page. Submissions are POSTed to their API and emailed to the address the
+// access key was registered with. Until a key is set, the form falls back to
+// opening a pre-filled email to FALLBACK_EMAIL.
+const ACCESS_KEY = '53a49a75-dcb8-4cd4-95ed-a34530e1d9dd';
+const FALLBACK_EMAIL = 'hello@brokenframestrategies.com';
+const SUBJECT = 'New discovery session request — Broken Frame';
+
+interface Props {
+  /** prefix for input ids, so labels stay unique per page */
+  id?: string;
+}
+const { id = 'contact' } = Astro.props;
+---
+<div class="card">
+  <div class="scrim" aria-hidden="true"></div>
+  <span class="bf" aria-hidden="true" style="--w: 3px">
+    <span class="h" style="top: 0; right: 0; left: 160px"></span>
+    <span class="v" style="left: 0; top: 160px; bottom: 0"></span>
+    <span class="h" style="bottom: 0; left: 0; right: 0"></span>
+    <span class="v" style="top: 0; right: 0; bottom: 0"></span>
+    <span class="k brk" style="top: 0; left: 0; width: 146px; height: 146px; border-top: var(--w) solid var(--c); border-left: var(--w) solid var(--c); transform: translate(-30px, -36px) rotate(-8deg); transform-origin: 0 0"></span>
+  </span>
+
+  <div class="body">
+    <div class="mono spark eyebrow">The Discovery Session</div>
+    <h2 class="title rise">Ready to ignite your brand story?</h2>
+    <p class="lead">Sixty focused minutes. We pull apart how you tell your story today and find the frame that makes your value obvious. Free, structured, and yours to keep — you'll hear back within one business day.</p>
+
+    <form class="madlib" data-access-key={ACCESS_KEY} data-fallback={FALLBACK_EMAIL} data-subject={SUBJECT} novalidate>
+      <!-- honeypot: bots tick it, humans never see it -->
+      <input type="checkbox" name="botcheck" class="hp" tabindex="-1" autocomplete="off" aria-hidden="true" />
+
+      <div class="line">
+        <label for={`${id}-name`}>My name is</label>
+        <input id={`${id}-name`} name="name" type="text" required autocomplete="name" placeholder="Full name" />
+        <span aria-hidden="true">.</span>
+      </div>
+      <div class="line">
+        <label for={`${id}-email`}>Reach me at</label>
+        <input id={`${id}-email`} name="email" type="email" required autocomplete="email" placeholder="you@company.com" />
+        <span aria-hidden="true">.</span>
+      </div>
+      <div class="line">
+        <label for={`${id}-challenge`}>I'm working on</label>
+        <input id={`${id}-challenge`} name="challenge" type="text" placeholder="your business or challenge" />
+        <span aria-hidden="true">.</span>
+      </div>
+
+      <div class="actions">
+        <button type="submit" class="btn submit"><span class="btn-label">Frame the story</span> <span aria-hidden="true">→</span></button>
+        <span class="status" role="status" aria-live="polite"></span>
+      </div>
+    </form>
+  </div>
+</div>
+
+<style>
+  .card { position: relative; max-width: 1080px; padding: 64px 56px 72px; }
+  .scrim { position: absolute; inset: 0; background: rgba(14,11,12,0.55); }
+  .body { position: relative; }
+  .eyebrow { margin-bottom: 28px; }
+  .title {
+    margin: 0; font-weight: 800; font-stretch: 72%;
+    font-size: clamp(44px, 7vw, 120px); line-height: 0.94; letter-spacing: -0.025em;
+  }
+  .lead { margin: 32px 0 0; max-width: 620px; font-size: 20px; line-height: 1.5; color: rgba(243,234,224,0.92); }
+
+  .madlib {
+    margin-top: 56px; display: flex; flex-direction: column; gap: 22px;
+    font-weight: 600; font-stretch: 88%; font-size: clamp(24px, 3vw, 40px); line-height: 1.2; letter-spacing: -0.01em;
+  }
+  .line { display: flex; flex-wrap: wrap; align-items: baseline; gap: 6px 18px; }
+  .line input {
+    flex: 1 1 240px; min-width: 0; padding: 4px 0;
+    background: transparent; border: 0; border-bottom: 2px solid var(--bone); border-radius: 0;
+    color: var(--bone); font: inherit;
+  }
+  .line input:focus { outline: none; border-bottom-color: var(--spark); }
+  .line input:user-invalid { border-bottom-color: #FF6B5A; }
+  .hp { position: absolute !important; left: -9999px; width: 1px; height: 1px; opacity: 0; pointer-events: none; }
+
+  .actions { margin-top: 28px; display: flex; flex-wrap: wrap; align-items: center; gap: 22px; }
+  .submit { font-size: 22px; padding: 24px 36px; }
+  .status { font-family: var(--mono); font-size: 14px; letter-spacing: 0.02em; max-width: 44ch; }
+  .status.ok { color: var(--spark); }
+  .status.err { color: #FF6B5A; }
+
+  @media (max-width: 700px) {
+    .card { padding: 44px 24px 48px; }
+    .bf .k { width: 90px !important; height: 90px !important; transform: translate(-14px, -18px) rotate(-8deg) !important; }
+    .bf .h:first-child { left: 100px !important; }
+    .bf .v:nth-child(2) { top: 100px !important; }
+    .lead { font-size: 18px; }
+    .madlib { margin-top: 40px; font-size: 24px; }
+    .line input { flex-basis: 100%; }
+    .line > span { display: none; }
+    .submit { font-size: 19px; padding: 20px 28px; }
+  }
+</style>
+
+<script>
+  const WEB3FORMS_URL = 'https://api.web3forms.com/submit';
+
+  document.querySelectorAll<HTMLFormElement>('form.madlib').forEach((form) => {
+    const statusEl = form.querySelector('.status') as HTMLElement;
+    const btn = form.querySelector('button[type="submit"]') as HTMLButtonElement;
+    const labelEl = btn.querySelector('.btn-label') as HTMLElement;
+    const accessKey = (form.dataset.accessKey || '').trim();
+    const fallback = form.dataset.fallback || '';
+    const subject = form.dataset.subject || 'New enquiry';
+
+    const setStatus = (msg: string, cls = '') => {
+      statusEl.textContent = msg;
+      statusEl.className = 'status' + (cls ? ' ' + cls : '');
+    };
+    const setBusy = (busy: boolean) => {
+      btn.disabled = busy;
+      labelEl.textContent = busy ? 'Sending…' : 'Frame the story';
+    };
+
+    form.addEventListener('submit', async (e) => {
+      e.preventDefault();
+      if (!form.reportValidity()) return;
+
+      const hp = form.querySelector('input[name="botcheck"]') as HTMLInputElement;
+      if (hp && hp.checked) { setStatus("Thanks — you'll hear back soon.", 'ok'); form.reset(); return; }
+
+      const data = new FormData(form);
+
+      if (!accessKey) {
+        const body = encodeURIComponent(
+          `Name: ${data.get('name') || ''}\nEmail: ${data.get('email') || ''}\nWorking on: ${data.get('challenge') || ''}`
+        );
+        window.location.href = `mailto:${fallback}?subject=${encodeURIComponent(subject)}&body=${body}`;
+        setStatus('Opening your email app…', 'ok');
+        return;
+      }
+
+      data.append('access_key', accessKey);
+      data.append('subject', subject);
+      data.append('from_name', 'Broken Frame — website');
+
+      setBusy(true);
+      setStatus('Sending…');
+      try {
+        const res = await fetch(WEB3FORMS_URL, { method: 'POST', headers: { Accept: 'application/json' }, body: data });
+        const json = await res.json().catch(() => ({}));
+        if (res.ok && json.success) {
+          form.reset();
+          setStatus("Got it. You'll hear back within one business day.", 'ok');
+        } else {
+          setStatus(`Couldn't send that — please email ${fallback} instead.`, 'err');
+        }
+      } catch {
+        setStatus(`Network hiccup — please email ${fallback} instead.`, 'err');
+      } finally {
+        setBusy(false);
+      }
+    });
+  });
+</script>
