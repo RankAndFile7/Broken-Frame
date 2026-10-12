@@ -1,75 +1,56 @@
 # Broken Frame Strategies — website
 
-Dark, cinematic, type-forward one-page site built with [Astro](https://astro.build).
-Matches the approved design comp: plum base, sunset-fire accents, broken-frame motif.
+Four-page static site built with [Astro](https://astro.build): near-black ground, bone and
+oxblood panels, ember/spark accents, and a "broken frame" motif drawn from separate line
+segments that knock loose as you scroll.
 
 ## Run it locally
 
 ```bash
 npm install
 npm run dev      # http://localhost:4321
+npm run build    # static site → ./dist
+npm run preview  # serve the production build
 ```
 
-```bash
-npm run build    # outputs static site to ./dist
-npm run preview  # preview the production build
-```
-
-Deploy the `dist/` folder to any static host (Netlify, Vercel, Cloudflare Pages, S3, etc.).
-No server required. Set your production domain in `astro.config.mjs` (`site:`) before deploying.
+Pushing to `main` deploys to GitHub Pages (`.github/workflows/deploy.yml`) at the custom
+domain in `public/CNAME`.
 
 ## Structure
 
 ```
 src/
-  layouts/Base.astro        shared <head>, fonts, scroll-reveal
+  layouts/Base.astro            <head>, fonts, footer
   components/
-    Nav.astro               fixed nav + mobile menu
-    Hero.astro              "Ignite your brand story" + sunset panel
-    Problem.astro           01 — The Real Problem
-    Approach.astro          02 — The Approach
-    Payoff.astro            03 — The Payoff (staggered cards)
-    About.astro             04 — About (your bio)
-    Contact.astro           discovery-session madlib form
+    Nav.astro                   top nav (pass `current` to highlight the page)
     Footer.astro
-  pages/index.astro         assembles the page
-  styles/global.css         design tokens (colors, type, spacing)
+    Mark.astro                  the broken-frame logo mark (SVG)
+    ContactCard.astro           discovery-session madlib form (Web3Forms)
+    ContactSection.astro        campfire-photo section wrapping the form
+  pages/
+    index.astro                 Home — hero, problem, approach, payoff, teasers, contact
+    why-narrative.astro         Why Narrative
+    our-story.astro             Our Story (Robert's bio + portrait)
+    free-consultation.astro     Free Consultation (form)
+  styles/global.css             color tokens, broken-frame pieces, animations
 public/
-  fonts/                    self-hosted Fraunces + Inter (no external calls)
-  favicon.svg
+  images/                       frame-bonfire.jpg (hero), beach-campfire.jpg (contact)
+  robert.jpg                    portrait on Our Story
 ```
 
-Fonts: **Fraunces** (display serif) + **Inter** (body). Both self-hosted — the page
-makes zero third-party requests, so it loads fast and stays private.
+Fonts: **Archivo** (variable, uses the width axis for the condensed headlines) and
+**DM Mono**, both self-hosted via `@fontsource` — the page makes no third-party font requests.
 
-## Before you go live — 4 things that need YOU
+Colors live as CSS variables at the top of `src/styles/global.css`.
 
-1. **About page, one line.** `src/components/About.astro` has a placeholder marked
-   with a dashed underline: *"the craft of story structure itself."* Replace it with
-   your real answer — the specific side obsession (screenwriting? myth? story theory?).
-   Search the file for `data-needs-input`.
+## The contact form
 
-2. **The contact form — one value.** The form is wired to **Web3Forms** (free, no
-   dashboard, no third-party script on the page). To turn it on:
-   - Go to https://web3forms.com, enter the email where you want submissions to land,
-     and they'll email you an **Access Key** (a UUID).
-   - Paste it into `ACCESS_KEY` at the top of `src/components/Contact.astro`.
+Wired to **Web3Forms**: submissions POST to their API and arrive by email at the address the
+access key was registered with. The key and a mailto fallback address are at the top of
+`src/components/ContactCard.astro`. Do a live test submission after any change.
 
-   That's the whole setup. Until a key is set, the form gracefully falls back to opening
-   a pre-filled email to `FALLBACK_EMAIL` (also at the top of that file — make it a real
-   inbox). Submit, error, spam-honeypot, and validation states are all built and tested.
-   **Do a live test submission before the DNS switch** (per the spec). Free tier is 250
-   submissions/month; swapping to Formspree/Basin later is a one-line change.
+## Motion
 
-3. **Your photo.** `About.astro` has a "Portrait" placeholder frame. Drop a real image
-   into `public/` and swap the `.portrait` div for an `<img>`.
-
-4. **Real proof (optional but recommended).** The comp has no logos or results, but one
-   line with a concrete outcome would carry more weight than anything else on the page.
-
-## Notes
-
-- Dark theme only, to match the comp. Colors are CSS variables in `global.css`, so a
-  light theme can be layered later if you want it.
-- Accessible: keyboard focus states, reduced-motion support, semantic landmarks, labelled
-  form fields.
+Scroll effects (parallax, frame pieces breaking, the "fuse" on Our Story) use CSS
+scroll-driven animations. Browsers without support show the static layout; visitors with
+reduced motion turned on get no animation.

@@ -1,25 +1,283 @@
 ---
 import Base from '../layouts/Base.astro';
 import Nav from '../components/Nav.astro';
-import Hero from '../components/Hero.astro';
-import Problem from '../components/Problem.astro';
-import Approach from '../components/Approach.astro';
-import Story from '../components/Story.astro';
-import Payoff from '../components/Payoff.astro';
-import Explore from '../components/Explore.astro';
-import Contact from '../components/Contact.astro';
-import Footer from '../components/Footer.astro';
+import Mark from '../components/Mark.astro';
+import ContactSection from '../components/ContactSection.astro';
+
+const heroEmbers = [
+  [8, 4, 'spark', 8, 40, -560, -1], [17, 3, 'ember', 6.5, -30, -560, -3.5], [26, 5, 'spark', 9, 60, -640, -6],
+  [34, 3, 'ember', 7, 20, -560, -2], [43, 4, 'spark', 7.5, -50, -560, -5], [51, 6, 'ember', 10, 30, -700, -0.5],
+  [58, 3, 'spark', 6, 50, -560, -4], [64, 4, 'ember', 8.5, -20, -560, -7], [71, 5, 'spark', 9.5, 70, -620, -2.8],
+  [79, 3, 'ember', 6.8, -40, -560, -5.6], [86, 4, 'spark', 8, 25, -560, -1.7], [93, 3, 'ember', 7.2, -60, -560, -4.4],
+] as const;
 ---
 <Base>
-  <Nav />
-  <main>
-    <Hero />
-    <Problem />
-    <Approach />
-    <Story />
-    <Payoff />
-    <Explore />
-    <Contact />
-  </main>
-  <Footer />
+  <!-- HERO -->
+  <section id="top" class="hero">
+    <div class="hero-media">
+      <img class="px-hero" src="/images/frame-bonfire.jpg" alt="A bonfire built from wooden picture frames burning on a beach at sunset" fetchpriority="high" />
+    </div>
+    <div class="hero-shade-x" aria-hidden="true"></div>
+    <div class="hero-shade-y" aria-hidden="true"></div>
+
+    <Nav current="home" />
+
+    <div class="px-out wrap hero-copy">
+      <div class="mono spark kicker"><Mark size={16} stroke={3} />Brand narrative consulting · Encinitas, CA</div>
+      <h1 class="h-hero">
+        <span class="bf" aria-hidden="true" style="--w: 3px; inset: 0 0.95em 0 0">
+          <span class="h" style="top: 0; left: 0; width: calc(100% - 1.15em)"></span>
+          <span class="v" style="top: 0; left: 0; bottom: 0"></span>
+          <span class="h" style="bottom: 0; left: 0; right: 0"></span>
+          <span class="v" style="right: 0; top: 60%; bottom: 0"></span>
+          <span class="v brk-load" style="right: 0; top: 0.95em; height: 0.42em; transform: translate(0.62em, -0.08em) rotate(-14deg); transform-origin: 50% 100%"></span>
+          <span class="k brk-load" style="top: 0; right: 0; width: 0.95em; height: 0.72em; border-top: var(--w) solid var(--c); border-right: var(--w) solid var(--c); transform: translate(0.7em, -0.5em) rotate(18deg); transform-origin: 0 100%"></span>
+        </span>
+        <span class="ln">Ignite your <span class="spark">brand story.</span></span>
+        <span class="ln">Scale your <span class="spark">business.</span></span>
+      </h1>
+      <div class="hero-foot">
+        <p>Brand narrative consulting that gives founders outsized leverage to fuel growth.</p>
+        <a href="#contact" class="btn">Book a free consultation <span aria-hidden="true">→</span></a>
+      </div>
+    </div>
+
+    <div class="scroll-cue mono" aria-hidden="true">Scroll<span class="cue-track"><span class="cue"></span></span></div>
+
+    <div class="embers" aria-hidden="true" style="z-index: 2; bottom: -220px; height: 220px">
+      {heroEmbers.map(([l, s, c, d, x, y, dl]) => (
+        <span class="ember" style={`left: ${l}%; width: ${s}px; height: ${s}px; background: var(--${c}); --d: ${d}s; --x: ${x}px; --y: ${y}px; animation-delay: ${dl}s`}></span>
+      ))}
+    </div>
+  </section>
+
+  <!-- 01 PROBLEM -->
+  <section id="problem" class="wrap problem">
+    <div class="px-slow ghost" aria-hidden="true">01</div>
+    <div class="mono label">
+      <span class="num ember-num">
+        <span class="bf" aria-hidden="true" style="--w: 1.5px">
+          <span class="h" style="top: 0; left: 0; width: calc(100% - 16px)"></span><span class="v" style="top: 0; left: 0; bottom: 0"></span><span class="h" style="bottom: 0; left: 0; right: 0"></span><span class="v" style="right: 0; top: 16px; bottom: 0"></span>
+          <span class="k brk" style="top: 0; right: 0; width: 11px; height: 11px; border-top: var(--w) solid var(--c); border-right: var(--w) solid var(--c); transform: translate(4px, -4px) rotate(14deg); transform-origin: 100% 0"></span>
+        </span>01</span>
+      <span>The real problem</span>
+    </div>
+    <div class="problem-row">
+      <div class="problem-frame">
+        <span class="bf" aria-hidden="true">
+          <span class="h" style="top: 0; left: 0; right: 0"></span><span class="v" style="top: 0; right: 0; bottom: 0"></span><span class="v" style="top: 0; left: 0; bottom: 130px"></span><span class="h" style="bottom: 0; left: 130px; right: 0"></span>
+          <span class="k brk" style="bottom: 0; left: 0; width: 116px; height: 116px; border-bottom: var(--w) solid var(--c); border-left: var(--w) solid var(--c); transform: translate(-22px, 28px) rotate(9deg); transform-origin: 0 100%"></span>
+        </span>
+        <h2 class="h-xl rise">Before anyone will buy your product, <span class="ember-text">they must first buy into your story.</span></h2>
+      </div>
+      <p class="problem-copy">When ads aren't converting, social is flat, and investors aren't hopping on board — the real problem is that they can't see the value. The brand story isn't landing.</p>
+    </div>
+  </section>
+
+  <!-- 02 APPROACH -->
+  <section id="approach" class="panel-bone approach">
+    <div class="wrap section-pad">
+      <div class="px-slow ghost ghost-dark" aria-hidden="true">02</div>
+      <div class="mono label label-dark">
+        <span class="num" style="color: var(--accent); font-weight: 500">
+          <span class="bf" aria-hidden="true" style="--c: var(--accent); --w: 1.5px">
+            <span class="h" style="top: 0; left: 0; right: 0"></span><span class="v" style="top: 0; right: 0; bottom: 0"></span><span class="v" style="top: 0; left: 0; bottom: 16px"></span><span class="h" style="bottom: 0; left: 16px; right: 0"></span>
+            <span class="k brk" style="bottom: 0; left: 0; width: 11px; height: 11px; border-bottom: var(--w) solid var(--c); border-left: var(--w) solid var(--c); transform: translate(-4px, 5px) rotate(14deg); transform-origin: 0 100%"></span>
+          </span>02</span>
+        <span>The approach</span>
+      </div>
+      <h2 class="h-xl rise" style="position: relative; max-width: 1050px">Brand narrative: a sharable lens for value.</h2>
+      <div class="approach-row">
+        <div class="approach-card">
+          <span class="bf" aria-hidden="true" style="--c: var(--accent)">
+            <span class="h" style="top: 0; left: 0; right: 0"></span><span class="v" style="top: 0; right: 0; bottom: 0"></span><span class="v" style="top: 0; left: 0; height: 44%"></span>
+            <span class="v brk" style="top: calc(44% + 20px); left: 0; bottom: 0; transform: translateX(-16px)"></span>
+            <span class="h brk" style="bottom: 0; left: 0; width: calc(100% + 16px); transform: translateX(-16px)"></span>
+          </span>
+          <h3>Break the old frame</h3>
+          <p>A good brand narrative breaks their old frame and gives them an insight into your unique way of viewing the problem. Now, through your framing, the value becomes crystal clear, and your solution is the obvious answer.</p>
+        </div>
+        <div class="approach-card dark">
+          <h3><span class="ember-text">Story:</span> solving growth at the source</h3>
+          <p>Above everything else, your business is a story about how you create change in the world. Everything else is just execution. Fix how you tell your story, and everything downstream falls into place.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 03 PAYOFF -->
+  <section id="payoff" class="panel-red payoff">
+    <div class="wrap section-pad">
+      <div class="px-slow ghost ghost-red" aria-hidden="true">03</div>
+      <div class="mono label">
+        <span class="num spark">
+          <span class="bf" aria-hidden="true" style="--c: var(--bone); --w: 1.5px">
+            <span class="half" style="clip-path: inset(-6px 52% -6px -6px)"><span class="h" style="top: 0; left: 0; right: 0"></span><span class="v" style="top: 0; left: 0; bottom: 0"></span><span class="h" style="bottom: 0; left: 0; right: 0"></span><span class="v" style="top: 0; right: 0; bottom: 0"></span></span>
+            <span class="half brk" style="clip-path: inset(-6px -6px -6px 52%); transform: translate(4px, -4px) rotate(5deg)"><span class="h" style="top: 0; left: 0; right: 0"></span><span class="v" style="top: 0; left: 0; bottom: 0"></span><span class="h" style="bottom: 0; left: 0; right: 0"></span><span class="v" style="top: 0; right: 0; bottom: 0"></span></span>
+          </span>03</span>
+        <span>The payoff</span>
+      </div>
+      <h2 class="h-xl rise" style="position: relative">What a strong narrative unlocks.</h2>
+      <div class="payoff-grid">
+        <div class="pay">
+          <span class="bf" aria-hidden="true" style="--c: var(--bone)">
+            <span class="h" style="top: 0; left: 0; width: 58%"></span><span class="h brk" style="top: 0; left: calc(58% + 8px); right: 0; transform: translateY(-4px)"></span><span class="v" style="top: 0; left: 0; bottom: 0"></span><span class="h" style="bottom: 0; left: 0; right: 0"></span><span class="v brk" style="top: 0; right: 0; bottom: 0; transform: translateY(-4px)"></span>
+          </span>
+          <div class="pay-n">01</div><h3>Higher conversion</h3><p>Sales and ads that actually land.</p>
+        </div>
+        <div class="pay">
+          <span class="bf" aria-hidden="true" style="--c: var(--bone)">
+            <span class="h" style="top: 0; left: 0; right: 0"></span><span class="v" style="top: 0; left: 0; bottom: 0"></span><span class="v" style="top: 0; right: 0; bottom: 0"></span><span class="h" style="bottom: 0; left: 0; width: 34%"></span>
+            <span class="h brk" style="bottom: 0; left: calc(34% + 8px); width: 24%; transform: translate(2px, 16px) rotate(-9deg); transform-origin: 0 50%"></span><span class="h" style="bottom: 0; left: calc(58% + 24px); right: 0"></span>
+          </span>
+          <div class="pay-n">02</div><h3>Investor confidence</h3><p>Pitches that get a yes.</p>
+        </div>
+        <div class="pay">
+          <span class="bf" aria-hidden="true" style="--c: var(--bone)">
+            <span class="half" style="clip-path: inset(-40px 51% -40px -40px)"><span class="h" style="top: 0; left: 0; right: 0"></span><span class="v" style="top: 0; left: 0; bottom: 0"></span><span class="h" style="bottom: 0; left: 0; right: 0"></span><span class="v" style="top: 0; right: 0; bottom: 0"></span></span>
+            <span class="half brk" style="clip-path: inset(-40px -40px -40px 51%); transform: translate(18px, -16px) rotate(3deg)"><span class="h" style="top: 0; left: 0; right: 0"></span><span class="v" style="top: 0; left: 0; bottom: 0"></span><span class="h" style="bottom: 0; left: 0; right: 0"></span><span class="v" style="top: 0; right: 0; bottom: 0"></span></span>
+          </span>
+          <div class="pay-n">03</div><h3>Team alignment</h3><p>Everyone rowing the same direction.</p>
+        </div>
+        <div class="pay">
+          <span class="bf" aria-hidden="true" style="--c: var(--bone)">
+            <span class="v" style="top: 0; left: 0; bottom: 0"></span><span class="h" style="bottom: 0; left: 0; right: 0"></span><span class="h" style="top: 0; left: 0; width: 30%"></span><span class="v" style="right: 0; bottom: 0; height: 30%"></span>
+            <span class="k brk" style="top: 0; right: 0; width: 58px; height: 58px; border-top: var(--w) solid var(--spark); border-right: var(--w) solid var(--spark); transform: translate(34px, -56px) rotate(32deg); transform-origin: 100% 0"></span>
+          </span>
+          <div class="pay-n pay-n-lift spark">04</div><h3>Organic growth</h3><p>A story your customers tell for you.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- GO DEEPER -->
+  <section id="deeper" class="wrap deeper">
+    <a href="/why-narrative/" class="teaser">
+      <span class="bf" aria-hidden="true">
+        <span class="h" style="top: 0; left: 0; width: calc(100% - 130px)"></span><span class="v" style="top: 0; left: 0; bottom: 0"></span><span class="h" style="bottom: 0; left: 0; right: 0"></span><span class="v" style="right: 0; top: 130px; bottom: 0"></span>
+        <span class="k brk" style="top: 0; right: 0; width: 116px; height: 116px; border-top: var(--w) solid var(--c); border-right: var(--w) solid var(--c); transform: translate(24px, -28px) rotate(10deg); transform-origin: 100% 0"></span>
+      </span>
+      <div>
+        <div class="mono spark t-kicker">Why Narrative</div>
+        <h2 class="t-title rise">Change the story, <span class="ember-text">change the outcome.</span></h2>
+        <p class="t-copy">Story is the highest leverage point in your business. See how one shift moves everything else with it.</p>
+      </div>
+      <span class="t-link">Explore Why Narrative <span aria-hidden="true">→</span></span>
+    </a>
+
+    <a href="/our-story/" class="teaser teaser-photo">
+      <div class="t-media" aria-hidden="true">
+        <img class="px-img" src="/images/beach-campfire.jpg" alt="" loading="lazy" decoding="async" />
+        <div class="t-shade"></div>
+      </div>
+      <span class="bf" aria-hidden="true">
+        <span class="h" style="top: 0; left: 0; right: 0"></span><span class="v" style="top: 0; right: 0; bottom: 0"></span><span class="v" style="top: 0; left: 0; bottom: 130px"></span><span class="h" style="bottom: 0; left: 130px; right: 0"></span>
+        <span class="k brk" style="bottom: 0; left: 0; width: 116px; height: 116px; border-bottom: var(--w) solid var(--c); border-left: var(--w) solid var(--c); transform: translate(-24px, 28px) rotate(9deg); transform-origin: 0 100%"></span>
+      </span>
+      <div style="position: relative">
+        <div class="mono spark t-kicker">Our Story</div>
+        <h2 class="t-title rise">Fifteen years of <span class="ember-text">fixing the wrong thing.</span></h2>
+        <p class="t-copy">How years of watching businesses throw volume at a broken message led to doing one thing: narrative.</p>
+      </div>
+      <span class="t-link" style="position: relative">Read Our Story <span aria-hidden="true">→</span></span>
+    </a>
+  </section>
+
+  <ContactSection />
 </Base>
+
+<style>
+  /* hero */
+  .hero { position: relative; min-height: 900px; display: flex; flex-direction: column; }
+  .hero-media { position: absolute; inset: 0; overflow: hidden; }
+  .hero-media img { position: absolute; top: 0; left: 0; width: 140%; max-width: none; height: 100%; object-fit: cover; object-position: 50% 42%; }
+  .hero-shade-x { position: absolute; inset: 0; background: linear-gradient(90deg, rgba(14,11,12,0.82) 0%, rgba(14,11,12,0.55) 38%, rgba(14,11,12,0.1) 68%, rgba(14,11,12,0) 100%); }
+  .hero-shade-y { position: absolute; inset: 0; background: linear-gradient(180deg, rgba(14,11,12,0.6) 0%, rgba(14,11,12,0.05) 28%, rgba(14,11,12,0.3) 55%, rgba(14,11,12,0.9) 86%, #0E0B0C 100%); }
+  .hero-copy { z-index: 3; padding-top: 96px; padding-bottom: 200px; }
+  .kicker { display: flex; align-items: center; gap: 14px; margin-bottom: 44px; }
+  .h-hero { text-shadow: 0 2px 30px rgba(14,11,12,0.55); }
+  .hero-foot { display: flex; flex-direction: column; align-items: flex-start; gap: 32px; margin-top: 48px; }
+  .hero-foot p { margin: 0; max-width: 520px; font-size: 22px; line-height: 1.45; color: rgba(243,234,224,0.92); }
+  .scroll-cue {
+    position: absolute; z-index: 3; left: 50%; bottom: 28px; transform: translateX(-50%);
+    display: flex; flex-direction: column; align-items: center; gap: 10px;
+    font-size: 11px; letter-spacing: 0.2em; color: rgba(243,234,224,0.7);
+  }
+  .cue-track { display: block; width: 1px; height: 44px; background: rgba(243,234,224,0.18); position: relative; overflow: hidden; }
+  .cue { position: absolute; inset: 0; display: block; background: var(--spark); }
+
+  /* numbered section labels */
+  .label { position: relative; display: flex; align-items: center; gap: 18px; margin-bottom: 56px; color: rgba(243,234,224,0.75); }
+  .label-dark { color: rgba(14,11,12,0.75); }
+  .num { position: relative; display: inline-flex; align-items: center; justify-content: center; width: 44px; height: 44px; }
+  .ember-num { color: var(--ember); }
+  .section-pad { padding-top: 200px; padding-bottom: 220px; }
+  .ghost-dark { top: 60px; -webkit-text-stroke-color: rgba(14,11,12,0.08); }
+  .ghost-red { top: 60px; -webkit-text-stroke-color: rgba(243,234,224,0.14); }
+
+  /* problem */
+  .problem { padding-top: 160px; padding-bottom: 220px; }
+  .problem-row { position: relative; display: flex; flex-wrap: wrap; gap: 64px 72px; align-items: flex-end; }
+  .problem-frame { position: relative; flex: 1 1 640px; padding: 48px 56px 52px 44px; }
+  .problem-copy { margin: 0; flex: 0 1 420px; font-size: 21px; line-height: 1.55; color: rgba(243,234,224,0.88); }
+
+  /* approach: fractured top edge */
+  .approach { clip-path: polygon(0 70px, 18% 22px, 19.5% 56px, 47% 0, 49% 30px, 76% 14px, 100% 52px, 100% 100%, 0 100%); }
+  .approach-row { position: relative; display: flex; flex-wrap: wrap; gap: 56px 64px; margin-top: 88px; }
+  .approach-card { position: relative; flex: 1 1 420px; padding: 44px 48px 48px; }
+  .approach-card.dark { background: var(--ink); color: var(--bone); }
+  .approach-card h3 { margin: 0 0 20px; font-weight: 700; font-stretch: 82%; font-size: 32px; line-height: 1.05; letter-spacing: -0.015em; }
+  .approach-card p { margin: 0; font-size: 19px; line-height: 1.6; }
+  .approach-card.dark p { color: rgba(243,234,224,0.9); }
+
+  /* payoff: fractured both edges, overlapping the bone panel */
+  .payoff {
+    margin-top: -90px;
+    clip-path: polygon(0 34px, 31% 0, 32.5% 44px, 64% 12px, 66% 56px, 100% 6px, 100% calc(100% - 44px), 72% 100%, 70.5% calc(100% - 34px), 38% calc(100% - 8px), 0 calc(100% - 56px));
+  }
+  .payoff .section-pad { padding-bottom: 230px; }
+  .payoff .label { color: var(--bone); }
+  .payoff-grid { position: relative; display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 64px 40px; margin-top: 104px; }
+  .pay { position: relative; padding: 36px 32px 40px; }
+  .pay-n { font-weight: 800; font-stretch: 62%; font-size: 92px; line-height: 0.9; letter-spacing: -0.02em; }
+  .pay-n-lift { position: relative; top: -64px; margin-bottom: -64px; margin-left: 36%; }
+  .pay h3 { margin: 28px 0 10px; font-weight: 700; font-stretch: 82%; font-size: 28px; line-height: 1.05; }
+  .pay p { margin: 0; font-size: 19px; line-height: 1.45; }
+
+  /* go deeper */
+  .deeper { padding-top: 180px; padding-bottom: 180px; display: flex; flex-wrap: wrap; gap: 72px 56px; }
+  .teaser {
+    position: relative; flex: 1 1 480px; min-height: 520px; padding: 56px 52px 52px;
+    display: flex; flex-direction: column; justify-content: space-between; gap: 48px;
+    text-decoration: none; color: var(--bone);
+  }
+  .teaser:hover { color: var(--bone); }
+  .teaser-photo { margin-top: 96px; }
+  .t-media { position: absolute; inset: 0; overflow: hidden; }
+  .t-media img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: 50% 80%; }
+  .t-shade { position: absolute; inset: 0; background: linear-gradient(180deg, rgba(14,11,12,0.92) 0%, rgba(14,11,12,0.62) 55%, rgba(14,11,12,0.86) 100%); }
+  .t-kicker { margin-bottom: 32px; }
+  .t-title { margin: 0; font-weight: 800; font-stretch: 72%; font-size: clamp(40px, 4.6vw, 72px); line-height: 0.96; letter-spacing: -0.025em; }
+  .t-copy { margin: 28px 0 0; max-width: 460px; font-size: 19px; line-height: 1.55; color: rgba(243,234,224,0.88); }
+  .t-link { display: inline-flex; align-items: center; gap: 12px; font-weight: 700; font-stretch: 88%; font-size: 20px; color: var(--ember); transition: gap .18s ease; }
+  .teaser:hover .t-link { gap: 18px; color: var(--spark); }
+
+  @media (max-width: 700px) {
+    .hero { min-height: 760px; }
+    .hero-media img { width: 100%; object-position: 62% 50%; }
+    .hero-shade-x { background: linear-gradient(90deg, rgba(14,11,12,0.7), rgba(14,11,12,0.35)); }
+    .hero-copy { padding-top: 56px; padding-bottom: 140px; }
+    .kicker { margin-bottom: 28px; font-size: 11px; }
+    .hero-foot p { font-size: 19px; }
+    .problem { padding-top: 110px; padding-bottom: 140px; }
+    .problem-frame { flex-basis: 100%; padding: 32px 24px 36px; }
+    .problem-copy { font-size: 19px; }
+    .section-pad { padding-top: 130px; padding-bottom: 150px; }
+    .approach-card { flex-basis: 100%; padding: 32px 24px 36px; }
+    .approach-card h3 { font-size: 27px; }
+    .payoff-grid { margin-top: 64px; }
+    .deeper { padding-top: 110px; padding-bottom: 110px; }
+    .teaser { flex-basis: 100%; min-height: 440px; padding: 40px 28px 36px; }
+    .teaser-photo { margin-top: 0; }
+  }
+</style>
