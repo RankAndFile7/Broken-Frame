@@ -1,0 +1,39 @@
+---
+// Closing section: the beach-fire photo with embers rising, and the contact card.
+import ContactCard from './ContactCard.astro';
+interface Props { id?: string; }
+const { id = 'contact' } = Astro.props;
+const embers = [
+  { l: 46, s: 4, c: 'spark', d: 6,   x: -40, y: -760, dl: -1 },
+  { l: 49, s: 3, c: 'ember', d: 7,   x: 30,  y: -820, dl: -3 },
+  { l: 51, s: 5, c: 'spark', d: 8,   x: 80,  y: -880, dl: -5 },
+  { l: 53, s: 3, c: 'ember', d: 6.5, x: -70, y: -700, dl: -2.2 },
+  { l: 55, s: 4, c: 'spark', d: 7.6, x: 40,  y: -800, dl: -4.1 },
+  { l: 48, s: 3, c: 'spark', d: 9,   x: 110, y: -900, dl: -6.3 },
+  { l: 52, s: 4, c: 'ember', d: 6.8, x: -100, y: -760, dl: -0.4 },
+  { l: 50, s: 3, c: 'spark', d: 7.3, x: 10,  y: -840, dl: -5.5 },
+];
+---
+<section id={id} class="contact">
+  <img class="px-img bg" src="/images/beach-campfire.jpg" alt="" loading="lazy" decoding="async" />
+  <div class="shade" aria-hidden="true"></div>
+  <div class="embers" aria-hidden="true" style="bottom: 60px; height: 10px">
+    {embers.map((e) => (
+      <span class="ember" style={`left: ${e.l}%; width: ${e.s}px; height: ${e.s}px; background: var(--${e.c}); --d: ${e.d}s; --x: ${e.x}px; --y: ${e.y}px; animation-delay: ${e.dl}s`}></span>
+    ))}
+  </div>
+  <div class="wrap inner">
+    <ContactCard id={id} />
+  </div>
+</section>
+
+<style>
+  .contact { position: relative; min-height: 900px; display: flex; align-items: center; overflow: hidden; }
+  .bg { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: 50% 78%; }
+  .shade {
+    position: absolute; inset: 0;
+    background: linear-gradient(180deg, #0E0B0C 0%, rgba(14,11,12,0.74) 26%, rgba(14,11,12,0.6) 70%, rgba(14,11,12,0.92) 100%);
+  }
+  .inner { padding-block: 160px; }
+  @media (max-width: 700px) { .inner { padding-block: 100px; } .contact { min-height: 0; } }
+</style>

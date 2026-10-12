@@ -1,0 +1,124 @@
+---
+import Base from '../layouts/Base.astro';
+import Nav from '../components/Nav.astro';
+import Mark from '../components/Mark.astro';
+
+const embers = [
+  [30, 4, 'spark', 7, 30, -360, -1], [45, 3, 'ember', 6, -40, -320, -3],
+  [58, 5, 'spark', 8, 50, -400, -5], [70, 3, 'ember', 6.6, -20, -340, -2],
+] as const;
+---
+<Base
+  title="Our Story — Broken Frame Strategies"
+  description="Fifteen years watching businesses fix the wrong thing — and why Broken Frame Strategies does one thing: brand narrative."
+>
+  <section id="top" class="hero">
+    <Nav current="story" />
+
+    <div class="wrap hero-copy">
+      <div class="px-slow ghost" aria-hidden="true">15</div>
+      <div class="mono spark kicker"><Mark size={16} stroke={3} />Our Story</div>
+      <h1 class="title">
+        <span style="display: block">Fifteen years watching businesses</span>
+        <span class="spark" style="display: block">fix the wrong thing.</span>
+      </h1>
+    </div>
+
+    <figure class="wrap portrait">
+      <div class="portrait-inner">
+        <span class="bf" aria-hidden="true" style="--w: 3px; inset: -28px 28px 28px -28px">
+          <span class="h" style="top: 0; left: 0; right: 0"></span><span class="v" style="top: 0; right: 0; bottom: 0"></span><span class="v" style="top: 0; left: 0; bottom: 150px"></span><span class="h" style="bottom: 0; left: 150px; right: 0"></span>
+          <span class="k brk-load" style="bottom: 0; left: 0; width: 134px; height: 134px; border-bottom: var(--w) solid var(--c); border-left: var(--w) solid var(--c); transform: translate(-30px, 36px) rotate(9deg); transform-origin: 0 100%"></span>
+        </span>
+        <img src="/robert.jpg" alt="Robert, founder of Broken Frame Strategies, at a Buddhist temple surrounded by colourful prayer flags" />
+      </div>
+    </figure>
+  </section>
+
+  <section id="story" class="wrap story-wrap">
+    <article class="story">
+      <div class="fuse-track" aria-hidden="true">
+        <span class="fuse"></span>
+        <span class="fuse-tip"><span class="tip"></span></span>
+      </div>
+
+      <p class="rise opener">The pattern is always the same. Sales are flat, the ads aren't converting, the pipeline's thin — and the instinct is to do more. More campaigns, more channels, more spend. <span class="dim">I ran that playbook myself for years: agency account exec, then head of marketing at a string of startups, throwing volume at problems and calling the good months proof it worked.</span></p>
+
+      <p class="rise pull">But more of a broken story is just a more expensive <span class="ember-text">broken story.</span></p>
+
+      <div class="body">
+        <p>You can't out-spend a message nobody's buying. And most of the time, that's the actual problem — not reach, not budget, not effort. The story underneath isn't landing.</p>
+        <p>That realization is why I stopped being a generalist. Storytelling structure had always been the thing I couldn't put down — <span class="ember-text" style="font-weight: 600">the craft of story structure itself.</span> The nights-and-weekends interest that had nothing to do with the day job, until one day I saw they were the same job. Every strong strategy is a story about how a company creates change. Every weak one is a company that never got its story straight. So I went where the leverage was and specialized in narrative strategy.</p>
+        <p>Now I do one thing: I help founders find the story that makes their value obvious — and then I teach them to own it. The goal isn't to make you dependent on me.</p>
+      </div>
+
+      <p class="rise pull pull-spark">It's to make you dangerous without me.</p>
+
+      <div class="belief">
+        <span class="bf" aria-hidden="true">
+          <span class="h" style="top: 0; left: 0; width: calc(100% - 96px)"></span><span class="v" style="top: 0; left: 0; bottom: 0"></span><span class="h" style="bottom: 0; left: 0; right: 0"></span><span class="v" style="right: 0; top: 96px; bottom: 0"></span>
+          <span class="k brk" style="top: 0; right: 0; width: 82px; height: 82px; border-top: var(--w) solid var(--c); border-right: var(--w) solid var(--c); transform: translate(22px, -26px) rotate(12deg); transform-origin: 100% 0"></span>
+        </span>
+        <p>I believe most business problems people treat as execution problems are really <span class="spark" style="font-weight: 700">framing problems.</span> Fix the frame, and everything downstream — sales, fundraising, team, growth — starts pulling in the same direction.</p>
+      </div>
+
+      <p class="mono sign">Robert — founder, Broken Frame Strategies · Encinitas, CA</p>
+      <a href="/free-consultation/" class="btn sign-cta">Book a free consultation <span aria-hidden="true">→</span></a>
+    </article>
+  </section>
+
+  <div class="embers send-off" aria-hidden="true">
+    {embers.map(([l, s, c, d, x, y, dl]) => (
+      <span class="ember" style={`left: ${l}%; width: ${s}px; height: ${s}px; background: var(--${c}); --d: ${d}s; --x: ${x}px; --y: ${y}px; animation-delay: ${dl}s`}></span>
+    ))}
+  </div>
+</Base>
+
+<style>
+  .hero { position: relative; }
+  .hero-copy { padding-top: 110px; }
+  .ghost { top: 40px; -webkit-text-stroke-color: rgba(243,234,224,0.08); }
+  .kicker { position: relative; display: flex; align-items: center; gap: 14px; margin-bottom: 44px; }
+  .title { position: relative; margin: 0; max-width: 1200px; font-weight: 800; font-stretch: 72%; font-size: clamp(44px, 7vw, 118px); line-height: 1; letter-spacing: -0.025em; }
+
+  .portrait { margin-top: 96px; margin-bottom: 0; }
+  .portrait-inner { position: relative; margin-left: 8%; }
+  .portrait img { position: relative; width: 100%; aspect-ratio: 3 / 2; object-fit: cover; object-position: 60% 50%; }
+
+  .story-wrap { padding-top: 180px; padding-bottom: 120px; }
+  .story { position: relative; max-width: 760px; margin: 0 auto; padding-left: 64px; }
+  .fuse-track { position: absolute; left: 0; top: 8px; bottom: 8px; width: 2px; background: rgba(243,234,224,0.12); }
+  .fuse { position: absolute; inset: 0; display: block; background: linear-gradient(180deg, var(--line), var(--ember) 70%, var(--spark)); }
+  .fuse-tip { position: absolute; left: 1px; top: 100%; display: block; width: 0; height: 0; }
+  .tip {
+    position: absolute; left: 0; top: 0; display: block; width: 10px; height: 10px; border-radius: 50%;
+    background: var(--spark); box-shadow: 0 0 18px 6px rgba(255,160,50,0.6); transform: translate(-50%, -50%);
+  }
+
+  .opener { margin: 0; font-size: clamp(24px, 2.6vw, 34px); line-height: 1.35; font-weight: 500; letter-spacing: -0.01em; }
+  .dim { color: rgba(243,234,224,0.7); }
+  .pull { margin: 120px -18% 120px 0; font-weight: 800; font-stretch: 70%; font-size: clamp(44px, 5.6vw, 84px); line-height: 0.95; letter-spacing: -0.025em; }
+  .pull-spark { margin-top: 80px; font-size: clamp(46px, 6.4vw, 96px); color: var(--spark); }
+  .body { display: flex; flex-direction: column; gap: 28px; font-size: 21px; line-height: 1.65; color: rgba(243,234,224,0.88); }
+  .body p { margin: 0; }
+  .belief { position: relative; padding: 52px 52px 56px; }
+  .belief p { margin: 0; font-size: clamp(22px, 2.4vw, 30px); line-height: 1.4; font-weight: 500; letter-spacing: -0.01em; }
+  .sign { margin: 64px 0 0; font-size: 14px; letter-spacing: 0.04em; color: rgba(243,234,224,0.75); }
+  .sign-cta { margin-top: 40px; }
+
+  .send-off { position: relative; height: 160px; }
+
+  @media (max-width: 700px) {
+    .hero-copy { padding-top: 56px; }
+    .kicker { margin-bottom: 28px; }
+    .portrait { margin-top: 72px; }
+    .portrait-inner { margin-left: 16px; margin-right: 0; }
+    .portrait .bf { inset: -16px 16px 16px -16px !important; }
+    .story-wrap { padding-top: 110px; padding-bottom: 80px; }
+    .story { padding-left: 28px; }
+    .pull { margin: 72px 0; }
+    .pull-spark { margin-top: 56px; }
+    .body { font-size: 18px; }
+    .belief { padding: 36px 24px 40px; }
+  }
+</style>

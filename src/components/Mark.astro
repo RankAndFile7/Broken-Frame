@@ -1,0 +1,11 @@
+---
+// The broken-frame mark: an open square with its top-right corner knocked loose.
+interface Props { size?: number; stroke?: number; color?: string; }
+const { size = 26, stroke = 2.5, color } = Astro.props;
+const main = color ?? 'var(--line)';
+const corner = color ?? 'var(--spark)';
+---
+<svg width={size} height={size} viewBox="0 0 26 26" fill="none" aria-hidden="true">
+  <path d="M16 3H3v20h20V10" style={`stroke: ${main}`} stroke-width={stroke}></path>
+  <path d="M19 1.5h5.5V7" style={`stroke: ${corner}`} stroke-width={stroke} transform="rotate(10 24 2) translate(1.5 -1)"></path>
+</svg>
