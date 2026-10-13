@@ -69,7 +69,7 @@ const heroEmbers = [
         </span>
         <h2 class="h-xl rise">Before anyone will buy your product, <span class="ember-text">they must first buy into your story.</span></h2>
       </div>
-      <p class="problem-copy">When ads aren't converting, social is flat, and investors aren't hopping on board — the real problem is that they can't see the value.<br /><span class="landing">The brand story isn't landing.</span></p>
+      <p class="problem-copy">When ads aren't converting, social is flat, and investors aren't hopping on board — the real problem is that they can't see the value.<br /><br /><span class="landing">The brand story isn't landing.</span></p>
     </div>
   </section>
 
@@ -91,7 +91,7 @@ const heroEmbers = [
         <span>The Truth</span>
       </div>
       <h2 class="h-xl rise truth-title">Story:<br /><span class="spark">Solving Growth At The Source</span></h2>
-      <p class="truth-copy rise">Above everything else, your business is a story about how you create change in the world. Everything else is just execution. Fix how you tell your story, and everything downstream falls into place.</p>
+      <p class="truth-copy rise">Above everything else, your business is a story about how you create change in the world. Everything else is just execution.<br /><br />Fix how you tell your story, and everything downstream falls into place.</p>
     </div>
   </section>
 
@@ -105,6 +105,12 @@ const heroEmbers = [
             <span class="k brk" style="bottom: 0; left: 0; width: 11px; height: 11px; border-bottom: var(--w) solid var(--c); border-left: var(--w) solid var(--c); transform: translate(-4px, 5px) rotate(14deg); transform-origin: 0 100%"></span>
           </span>03</span>
         <span>The approach</span>
+      </div>
+      <div class="lens-tile">
+        <span class="bf" aria-hidden="true" style="--w: 2px; inset: -14px -14px -14px -14px">
+          <span class="h" style="top: 0; left: 0; right: 0"></span><span class="v" style="top: 0; left: 0; bottom: 0"></span><span class="v" style="top: 0; right: 0; height: 40%"></span><span class="h" style="bottom: 0; left: 0; width: 60%"></span>
+        </span>
+        <img src="/images/lens-glasses.jpg" alt="A pair of red sunglasses on a glass table, reflected in a mirror" loading="lazy" decoding="async" />
       </div>
       <h2 class="h-xl rise" style="position: relative; max-width: 1050px">Brand Narrative:<br /><span class="lens">A Sharable Lens For Value.</span></h2>
       <div class="approach-row">
@@ -195,7 +201,7 @@ const heroEmbers = [
       </span>
       <div style="position: relative">
         <div class="mono spark t-kicker">Our Story</div>
-        <h2 class="t-title rise">Fifteen years of <span class="ember-text">fixing the wrong thing.</span></h2>
+        <h2 class="t-title rise">“Humans think in stories, and we try to make sense of the world by telling stories.”</h2>
         <p class="t-copy">How years of watching businesses throw volume at a broken message led to doing one thing: narrative.</p>
       </div>
       <span class="t-link" style="position: relative">Read Our Story <span aria-hidden="true">→</span></span>
@@ -240,7 +246,7 @@ const heroEmbers = [
   .problem-row { position: relative; display: flex; flex-wrap: wrap; gap: 64px 72px; align-items: flex-end; }
   .problem-frame { position: relative; flex: 1 1 640px; padding: 48px 56px 52px 44px; }
   .problem-copy { margin: 0; flex: 0 1 420px; font-size: 24px; line-height: 1.55; color: rgba(243,234,224,0.88); }
-  .landing { text-decoration: underline; text-decoration-color: #E0301E; text-decoration-thickness: 2px; text-underline-offset: 4px; }
+  .landing { font-weight: 700; }
   .frame-break { position: relative; height: 130px; background: var(--ink); }
   .fb-line { position: absolute; height: 2px; background: var(--accent); box-shadow: 0 0 14px rgba(255,120,40,.5); }
   .fb-left { left: 40px; top: 50%; width: calc(50% - 90px); transform: translateY(-50%); }
@@ -252,6 +258,14 @@ const heroEmbers = [
   }
   @media (max-width: 700px) { .frame-break { height: 96px; } .fb-left, .fb-right { width: calc(50% - 60px); } .fb-left { left: 20px; } .fb-right { right: 20px; } }
 
+  .lens-tile { position: absolute; top: 40px; right: 40px; width: 380px; height: 380px; transform: rotate(6deg); z-index: 1; }
+  .lens-tile img {
+    display: block; width: 100%; height: 100%; object-fit: cover; object-position: 50% 50%;
+    clip-path: polygon(0 0, 100% 0, 100% 72%, 72% 100%, 0 100%);
+    filter: saturate(1.05) contrast(1.05);
+  }
+  .lens-tile .bf { position: absolute; inset: -14px; }
+  @media (max-width: 860px) { .lens-tile { width: 120px; height: 120px; top: 16px; right: 16px; } }
   .truth { position: relative; background: var(--ink); color: var(--bone); overflow: hidden; }
   .truth-inner {
     position: relative; z-index: 1; padding-top: 110px;
@@ -311,7 +325,7 @@ const heroEmbers = [
   .t-media img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: 50% 80%; }
   .t-shade { position: absolute; inset: 0; background: linear-gradient(180deg, rgba(14,11,12,0.92) 0%, rgba(14,11,12,0.62) 55%, rgba(14,11,12,0.86) 100%); }
   .t-kicker { margin-bottom: 32px; }
-  .t-title { margin: 0; font-weight: 800; font-stretch: 72%; font-size: clamp(40px, 4.6vw, 72px); line-height: 0.96; letter-spacing: -0.025em; }
+  .t-title { margin: 0; font-weight: 800; font-stretch: 72%; font-size: clamp(34px, 3.8vw, 60px); line-height: 1.02; letter-spacing: -0.025em; }
   .t-copy { margin: 28px 0 0; max-width: 460px; font-size: 19px; line-height: 1.55; color: rgba(243,234,224,0.88); }
   .t-link { display: inline-flex; align-items: center; gap: 12px; font-weight: 700; font-stretch: 88%; font-size: 20px; color: var(--ember); transition: gap .18s ease; }
   .teaser:hover .t-link { gap: 18px; color: var(--spark); }

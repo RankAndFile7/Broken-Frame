@@ -205,8 +205,10 @@ const upstream = ['Sales', 'Ads', 'Fundraising', 'Team'];
           ))}
         </div>
       </div>
-      <p class="roi-copy">Narrative sits upstream of everything in your business.<br />Your sales, your ads, your fundraising, your team — they all flow from it.</p>
-      <p class="roi-copy">Which means improving it improves everything at once.<br /><strong style="color: var(--accent)">No other investment in your business has that kind of reach.</strong></p>
+      <div class="roi-pair">
+        <p class="roi-copy">Narrative sits upstream of everything in your business.<br />Your sales, your ads, your fundraising, your team — they all flow from it.</p>
+        <p class="roi-copy">Which means improving it improves everything at once. <strong style="color: var(--accent)">No other investment in your business has that kind of reach.</strong></p>
+      </div>
     </div>
   </section>
 
@@ -292,7 +294,7 @@ const upstream = ['Sales', 'Ads', 'Fundraising', 'Team'];
   .hat-strip img { display: block; width: 100%; height: 100%; object-fit: cover; object-position: 50% 38%; filter: saturate(.9); }
   .hat-strip::after { content: ''; position: absolute; inset: 0; background: linear-gradient(180deg, rgba(14,11,12,.2) 0%, rgba(14,11,12,.55) 45%, var(--ink) 100%); }
   .hat-title { position: relative; z-index: 2; margin-top: calc(clamp(280px, 32vw, 400px) * -0.5); }
-  .hat-row .hat-punch { margin-top: 24px; font-weight: 800; font-stretch: 74%; font-size: 48px; line-height: 0.98; letter-spacing: -0.02em; color: var(--spark); }
+  .hat-row .hat-punch { margin-top: 24px; font-weight: 800; font-stretch: 74%; font-size: 48px; line-height: 0.98; letter-spacing: -0.02em; color: var(--accent); }
 
   .roi { clip-path: polygon(0 40px, 18% 0, 19.5% 38px, 52% 10px, 54% 46px, 84% 4px, 100% 36px, 100% 100%, 0 100%); }
   .pad-roi { padding-top: 190px; padding-bottom: 190px; }
@@ -306,7 +308,8 @@ const upstream = ['Sales', 'Ads', 'Fundraising', 'Team'];
   .leaf { display: flex; flex-direction: column; align-items: center; }
   .twig { display: block; width: 2px; height: 48px; background: var(--ink); }
   .leaf-label { margin-top: 14px; padding: 14px 4px; border-top: 3px solid var(--accent); font-weight: 700; font-stretch: 82%; font-size: clamp(16px, 2.2vw, 28px); }
-  .roi-copy { position: relative; margin: 88px auto 0; max-width: 820px; text-align: center; font-size: 24px; line-height: 1.5; }
+  .roi-pair { position: relative; display: flex; flex-wrap: wrap; gap: 48px 64px; margin-top: 88px; justify-content: center; }
+  .roi-copy { margin: 0; flex: 1 1 380px; max-width: 480px; text-align: left; font-size: 20px; line-height: 1.5; }
 
   @media (max-width: 700px) {
     .hero-copy { padding-top: 56px; padding-bottom: 130px; }
