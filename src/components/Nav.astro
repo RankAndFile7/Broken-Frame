@@ -10,7 +10,7 @@ interface Props { current: 'home' | 'why' | 'story' | 'consult'; }
 const { current } = Astro.props;
 ---
 <nav aria-label="Main" class="nav wrap">
-  <a href="/" class="brand"><Mark /> Broken Frame Strategies</a>
+  <a href="/" class="brand"><img src="/images/logo-alt3.png" alt="Broken Frame Strategies" /></a>
   <div class="links">
     {pages.map((p) => (
       <a href={p.href} aria-current={current === p.key ? 'page' : undefined}>{p.label}</a>
@@ -24,11 +24,8 @@ const { current } = Astro.props;
     z-index: 3; padding-block: 28px;
     display: flex; flex-wrap: wrap; align-items: center; gap: 20px 28px;
   }
-  .brand {
-    text-decoration: none; display: inline-flex; align-items: center; gap: 12px;
-    font-weight: 800; font-stretch: 78%; font-size: 24px; letter-spacing: -0.01em; line-height: 1;
-  }
-  .brand:hover { color: var(--bone); }
+  .brand { display: inline-flex; align-items: center; }
+  .brand img { display: block; height: 48px; width: auto; }
   .links, .cta { font-family: var(--mono); font-size: 13px; letter-spacing: 0.04em; }
   .links { margin-left: auto; display: flex; flex-wrap: wrap; align-items: center; gap: 12px 28px; }
   .links a { text-decoration: none; padding-block: 12px; }
@@ -42,7 +39,7 @@ const { current } = Astro.props;
   /* phone: brand + button on one row, page links on the next */
   @media (max-width: 700px) {
     .nav { padding-block: 18px 4px; gap: 8px 12px; justify-content: space-between; }
-    .brand { font-size: 20px; gap: 10px; }
+    .brand img { height: 40px; }
     .cta { order: 2; padding: 12px 14px; font-size: 12px; letter-spacing: 0.02em; }
     .links { order: 3; flex-basis: 100%; margin-left: 0; gap: 0 22px; }
   }
