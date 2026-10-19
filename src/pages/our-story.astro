@@ -59,6 +59,21 @@ const embers = [
     </figure>
   </section>
 
+  <section class="client">
+    <div class="wrap">
+      <h2 class="h-xl client-title">Client <span>Success</span></h2>
+      <p class="client-sub">Helping founders turn their story into growth they can see.</p>
+    </div>
+    <div class="wrap client-body">
+    <div class="client-row">
+      <img class="client-logo" src="/images/ting-therapeutics.png" alt="Ting Therapeutics" loading="lazy" decoding="async" />
+      <figure class="client-quote">
+        <blockquote>“Robert helped me find the heart of my own story. Across my founder’s story, brand narrative, and pitch deck, he brought what mattered most into focus, and now people lean in every time I tell it.”</blockquote>
+        <figcaption class="mono">— Jian Zuo</figcaption>
+      </figure>
+    </div>
+  </section>
+
   <ContactSection />
 
   <div class="embers send-off" aria-hidden="true">
@@ -108,6 +123,20 @@ const embers = [
   .sign-cta { margin-top: 40px; }
 
   .send-off { position: relative; height: 160px; }
+  .client {
+    background: var(--bone); color: var(--ink); padding-top: 140px; padding-bottom: 140px;
+    clip-path: polygon(0 70px, 18% 22px, 19.5% 56px, 47% 0, 49% 30px, 76% 14px, 100% 52px, 100% 100%, 0 100%);
+  }
+  .client-title { font-size: clamp(44px, 6vw, 96px); color: var(--accent); }
+  .client-title span { color: var(--accent); }
+  .client-sub { margin: 28px 0 0; font-size: clamp(20px, 2vw, 26px); line-height: 1.4; color: rgba(14,11,12,0.8); max-width: 34ch; }
+  .client-body { margin-top: 80px; }
+  .client-row { display: flex; flex-wrap: wrap; align-items: center; gap: 64px clamp(40px, 6vw, 96px); }
+  .client-logo { flex: 0 0 210px; width: 210px; height: auto; }
+  .client-quote { margin: 0; flex: 1 1 480px; max-width: 640px; }
+  .client-quote blockquote { margin: 0; font-size: clamp(22px, 2.2vw, 30px); line-height: 1.4; font-weight: 500; color: var(--ink); }
+  .client-quote figcaption { margin-top: 24px; font-size: 26px; color: rgba(14,11,12,0.7); }
+  @media (max-width: 700px) { .client-logo { flex-basis: 100%; width: 150px; } }
 
   @media (max-width: 700px) {
     .hero-copy { padding-top: 56px; }
