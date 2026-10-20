@@ -72,6 +72,13 @@ const embers = [
         <figcaption class="mono">— Jian Zuo</figcaption>
       </figure>
     </div>
+    <div class="client-row client-row-2">
+      <figure class="client-quote">
+        <blockquote>“I really believe Robert’s impact on Streamlyne’s success will be felt for a long time to come.”</blockquote>
+        <figcaption class="mono">— Randy Ozden</figcaption>
+      </figure>
+      <img class="client-logo" src="/images/streamlyne.png" alt="Streamlyne" loading="lazy" decoding="async" />
+    </div>
   </section>
 
   <ContactSection />
@@ -131,9 +138,12 @@ const embers = [
   .client-title span { color: var(--accent); }
   .client-sub { margin: 28px 0 0; font-size: clamp(20px, 2vw, 26px); line-height: 1.4; color: rgba(14,11,12,0.8); max-width: 34ch; }
   .client-body { margin-top: 80px; }
+  .client-row-2 { margin-top: 96px; }
+  .client-row-2 .client-logo { flex-basis: 260px; width: 260px; }
+  .client-row-2 .client-quote { text-align: right; flex: 1 1 480px; max-width: none; }
   .client-row { display: flex; flex-wrap: wrap; align-items: center; gap: 64px clamp(40px, 6vw, 96px); }
   .client-logo { flex: 0 0 210px; width: 210px; height: auto; }
-  .client-quote { margin: 0; flex: 1 1 480px; max-width: 640px; }
+  .client-quote { margin: 0; flex: 1 1 480px; max-width: none; }
   .client-quote blockquote { margin: 0; font-size: clamp(22px, 2.2vw, 30px); line-height: 1.4; font-weight: 500; color: var(--ink); }
   .client-quote figcaption { margin-top: 24px; font-size: 26px; color: rgba(14,11,12,0.7); }
   @media (max-width: 700px) { .client-logo { flex-basis: 100%; width: 150px; } }
